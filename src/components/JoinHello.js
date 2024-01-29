@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom";
 import styled from "styled-components";
 import "./join.css";
 import handImg from "../assets/handImg.png";
@@ -16,7 +16,6 @@ const Join_hello = () => {
     display: flex;
     flex-direction: column;
     align-items: left;
-
   `;
 
   const InputContainer = styled.div`
