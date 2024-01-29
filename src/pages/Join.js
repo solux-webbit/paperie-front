@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom";
 import styled from "styled-components";
-import Join_hello from "../components/Join_hello";
+import JoinHello from "../components/JoinHello";
 
 const Join = () => { 
   const HelloContainer = styled.div`
@@ -13,7 +13,7 @@ const Join = () => {
   };
 
   return (
-        <Join_hello/>
+        <JoinHello/>
   );
 };
 

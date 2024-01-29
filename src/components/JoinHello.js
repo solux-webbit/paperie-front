@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createRoot } from "react-dom";
+import { createRoot } from 'react-dom/client';
 import styled from "styled-components";
 import "./join.css";
 import handImg from "../assets/handImg.png";
