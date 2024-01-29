@@ -8,7 +8,7 @@
 }
 
 .BoxStyle {
-  width: 1000px;
+  width: 70%;
   padding: 100px;
   margin: 5px;
   border: none;
@@ -19,6 +19,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.BackButton {
+  /* width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px; */
+  cursor: pointer;
 }
 
 .InputBoxStyle{
@@ -55,7 +65,7 @@
   font-weight: bold;
 }
 
-.blueButton:hover {
+.SignUpButton:hover {
   background-color: #00539F; /* 마우스 호버 시 배경색 변경 */
 }
 
@@ -65,10 +75,11 @@
 }
 .VerticalLine {
   border-left: 1px solid black;
+  margin-left: 30px;
+  margin-right: 20px;
   height: 70%;
   position: absolute;
-  left: 65%;
-  transform: translateX(-50%);
+  left: 60%;
 }
 
 .SocialText{
@@ -83,11 +94,11 @@
 }
 
 .LeftContent {
-  padding-right: 5px;
+  padding-right: 50px;
   flex-direction: column;
 }
 
 .RightContent {
-  padding-left: 210px;
+  margin-left: 150px;
   align-items: center;
 }
