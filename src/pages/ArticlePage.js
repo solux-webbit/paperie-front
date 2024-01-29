@@ -1,10 +1,10 @@
-// Home.js
+//ArticlePage.js
 
 import React from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
-import Search_report from "../components/search_report.js";
+import Search_article from "../components/search_article.js";
 import References from "../components/References.js";
 import Result from "../components/Result.js";
 
@@ -30,14 +30,14 @@ const ReferencesContainer = styled.div`
   margin-left: 70px; /* 사이드바와의 거리 */
 `;
 
-const Home = () => {
+const ArticlePage = () => {
   return (
     <>
     <Sidebar />
     <ContentContainer>
     <TopBar />
     <SearchContainer> 
-    <Search_report/> 
+    <Search_article/> 
     </SearchContainer>
     <ResultContainer>
     <Result/>
@@ -50,4 +50,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ArticlePage;

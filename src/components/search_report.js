@@ -31,7 +31,7 @@ const Search_report = () => {
   const handleSearch = async () => {
     try {
       // 백엔드 API 엔드포인트 URL
-      const apiUrl = 'https://your-backend-api-url.com'; // 실제 백엔드 URL로 교체하세요
+      const apiUrl = 'http://127.0.0.1:8000/api/scholars?query={query}}'; // 실제 백엔드 URL로 교체하세요
   
       // 요청 페이로드
       const requestData = {
