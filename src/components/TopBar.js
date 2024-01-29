@@ -58,6 +58,10 @@ class TopBar extends React.Component {
     this.props.history.push("/join");
   };
 
+  goToJoin = function () {
+    this.props.history.push("/Mypage");
+  }
+
   render() {
     console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
     return (
@@ -118,7 +122,9 @@ class TopBar extends React.Component {
             </form>
           </div>
         </Modal>
-        <Button variant="light">mypage</Button>
+        <Link to="/mypage">
+          <Button variant="light">mypage</Button>
+        </Link>
       </TopBarWrapper>
     );
   }

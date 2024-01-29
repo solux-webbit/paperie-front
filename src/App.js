@@ -8,6 +8,7 @@ import ArticlePage from "./pages/ArticlePage.js";
 import BookPage from "./pages/BookPage.js";
 import LawPage from "./pages/LawPage.js";
 import HelpPage from "./pages/HelpPage.js";
+import Mypage from "./pages/Mypage.js";
 
 class App extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
               <Route path="/law" component={LawPage} />
               <Route path="/help" component={HelpPage} />
               <Route path="/join" component={Join} />
+              <Route path="/mypage" component={Mypage} />
             </Switch>
           
       </BrowserRouter>
