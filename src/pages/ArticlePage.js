@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
-import Search_article from "../components/search_article.js";
+import SearchArticle from "../components/SearchArticle.js";
 import References from "../components/References.js";
 import Result from "../components/Result.js";
 
@@ -13,7 +13,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #FAFBFF;    /*배경색: 연한 하늘색*/
-  /*background-color: #F5F6FB;*/
+  background: linear-gradient(to bottom, #FAFBFF, #D8E3FA);
   padding: 20px;
 `;
 
@@ -37,7 +37,7 @@ const ArticlePage = () => {
     <ContentContainer>
     <TopBar />
     <SearchContainer> 
-    <Search_article/> 
+    <SearchArticle/> 
     </SearchContainer>
     <ResultContainer>
     <Result/>

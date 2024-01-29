@@ -1,27 +1,15 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./join.css";
 import handImg from "../assets/handImg.png";
 import logo from "../assets/paperielogo.png";
 import google from "../assets/google_login.png";
-import back from "../assets/back_button.png";
 
 const Join_hello = () => {
   const [IDValue, setIDValue] = useState("");
   const [PWValue, setPWValue] = useState("");
   const [PWCValue, setPWCValue] = useState("");
-
-  const BackContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-top: 10px;
-  margin-left: 10px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-`;
 
   const HelloContainer = styled.div`
     margin-bottom: 30px; /* 아이디창과의 거리 */
@@ -72,15 +60,7 @@ const Join_hello = () => {
 
 
   return (
-    <>
     <div className="BoxStyle">
-      <BackContainer>
-      <Link to="/">
-        <div className="BackButton">
-          <img src={back} alt="뒤로가기" />
-        </div>
-        </Link>
-      </BackContainer>
       <div className="LeftContent">
         <HelloContainer>
           <h3 className="HelloText">
@@ -124,10 +104,9 @@ const Join_hello = () => {
       </div>
       <div className="VerticalLine" />
       <div className="RightContent">
-        <img src={logo} style={{width: '250px', height: '250px'}}/>
+        <img src={logo} style={{width: '200px', height: '200px'}}/>
       </div>
     </div>
-    </>
   );
 };
 

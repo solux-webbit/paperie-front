@@ -1,8 +1,32 @@
-* {
-  font-family: 'Gmarket Sans', sans-serif;
+@font-face {
+  font-family: 'MICEGothic Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SejonghospitalBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.HelloText{
+body {
+  margin: 0;
+  background: linear-gradient(to bottom, #D8E3FA, #FAFBFF); /* 그라데이션 배경색 설정 */
+}
+
+* {
+  font-family: 'GmarketSansMedium', sans-serif;
+}
+
+.HelloText {
   font-size: 18px;
   font-weight: bold;
 }
@@ -19,19 +43,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: space-between;
 }
 
-.BackButton {
-  /* width: 30px;
-  height: 30px;
-  margin-top: 10px;
-  margin-left: 10px; */
-  cursor: pointer;
-}
-
-.InputBoxStyle{
+.InputBoxStyle {
   width: 400px;
   padding: 5px;
   margin: 5px;
@@ -47,32 +61,34 @@
   font-family: 'Gmarket Sans', sans-serif;
 }
 
-.RedText{
+.RedText {
   font-size: 15px;
   color: #F28F6B;
   font-weight: bold;
 }
 
-.SignUpButton{
+.SignUpButton {
   width: 200px;
-  background-color: #5577EF;
-  color: white; 
-  padding: 10px 15px; 
-  border: none; 
-  border-radius: 30px; 
-  cursor: pointer; 
-  font-size: 16px; 
+  /*background: linear-gradient(to right, #5366BA, #002CBF); /* 그라데이션 배경색 설정 */
+  background-color: #5366BA;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
   font-weight: bold;
 }
 
-.SignUpButton:hover {
+.blueButton:hover {
   background-color: #00539F; /* 마우스 호버 시 배경색 변경 */
 }
 
-.SignUpText{
+.SignUpText {
   color: white;
   font-size: 15px;
 }
+
 .VerticalLine {
   border-left: 1px solid black;
   margin-left: 30px;
@@ -82,12 +98,12 @@
   left: 60%;
 }
 
-.SocialText{
+.SocialText {
   font-size: 15px;
   font-weight: bold;
 }
 
-.Google{
+.Google {
   width: 175px;
   height: 40px;
   cursor: pointer;
