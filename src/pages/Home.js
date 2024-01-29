@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
-import SearchReport from "../components/SearchReport.js";
+import Search_report from "../components/search_report.js";
 import References from "../components/References.js";
 import Result from "../components/Result.js";
 
@@ -37,7 +37,7 @@ const Home = () => {
     <ContentContainer>
     <TopBar />
     <SearchContainer> 
-    <SearchReport/> 
+    <Search_report/> 
     </SearchContainer>
     <ResultContainer>
     <Result/>
