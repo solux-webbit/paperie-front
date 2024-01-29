@@ -1,4 +1,4 @@
-// Home.js
+//src\pages\HomePage.js
 
 import React from "react";
 import styled from "styled-components";

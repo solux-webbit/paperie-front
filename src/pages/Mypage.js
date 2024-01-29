@@ -1,3 +1,5 @@
+//src\pages\Mypage.js
+
 import React, { useState } from "react";
 import { createRoot } from "react-dom";
 import "./mypage.css";

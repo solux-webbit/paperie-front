@@ -1,4 +1,4 @@
-// src/App.js
+// src\App.js
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; // 부트스트랩 임포트
