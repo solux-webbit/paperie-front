@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom";
 import styled from "styled-components";
-import JoinHello from "../components/JoinHello";
+import Join_hello from "../components/Join_hello";
 
-const JoinContainer = styled.div`
-  background-color: blue; /* Join 컨테이너의 배경색을 파란색으로 설정 */
-  height: 100vh; /* 화면 전체 높이로 설정 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Join = () => {
+const Join = () => { 
+  const HelloContainer = styled.div`
+    margin-bottom: 70px; /* 아이디창과의 거리 */
+  `;
+
+  const handleID= () => {
+    // 인용 결과 확인 함수
+  };
+
   return (
-    <JoinContainer>
-      <JoinHello />
-    </JoinContainer>
+        <Join_hello/>
   );
 };
 
 export default Join;
-
 const root = createRoot(document.getElementById("root"));
-root.render(<Join />);
+root.render(<Join/>);

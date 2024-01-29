@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom";
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
+import "./search.css"; // Assuming there is a CSS file for styling
 
-const Search_book = () => {
+const Search_report = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const inputGroupStyle = {
@@ -36,7 +37,7 @@ const Search_book = () => {
       };
 
       // 백엔드 API 엔드포인트 URL
-      const apiUrl = 'http://127.0.0.1:8000/api/books?query=' + encodeURIComponent(requestData.query);
+      const apiUrl = `http://127.0.0.1:8000/api/scholars?query=${encodeURIComponent(requestData.query)}`;
 
       // 백엔드로 POST 요청 보내기
       const response = await axios.post(apiUrl, requestData);
@@ -56,11 +57,11 @@ const Search_book = () => {
       <h1>
         안녕하세요, <img src={handImg} alt="hand" />
       </h1>
-      <h1>어떤 책을 인용하시겠어요?</h1>
+      <h1>어떤 논문을 인용하시겠어요?</h1>
       <div style={inputGroupStyle}>
         <input
           type="text"
-          placeholder="책 제목을 입력하세요"
+          placeholder="논문 제목을 입력하세요"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           style={inputBoxStyle}
@@ -77,7 +78,7 @@ const Search_book = () => {
   );
 };
 
-export default Search_book;
+export default Search_report;
 
 const root = createRoot(document.getElementById("root"));
-root.render(<Search_book />);
+root.render(<Search_report />);

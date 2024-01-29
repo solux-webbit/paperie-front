@@ -5,7 +5,7 @@ import React from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
-import SearchBook from "../components/SearchBook.js";
+import Search_book from "../components/search_book.js";
 import References from "../components/References.js";
 import Result from "../components/Result.js";
 
@@ -38,7 +38,7 @@ const ArticlePage = () => {
     <ContentContainer>
     <TopBar />
     <SearchContainer> 
-    <SearchBook/> 
+    <Search_book/> 
     </SearchContainer>
     <ResultContainer>
     <Result/>
