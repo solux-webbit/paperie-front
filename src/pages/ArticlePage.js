@@ -13,7 +13,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #FAFBFF;    /*배경색: 연한 하늘색*/
-  background: linear-gradient(to bottom, #FAFBFF, #D8E3FA);
+  /*background-color: #F5F6FB;*/
   padding: 20px;
 `;
 

@@ -22,7 +22,6 @@ const Side = styled.div`
   width: 20%;
   height: 300vh; /* 화면 전체 높이로 설정 */
   background-color: white; /* 배경색을 여기에 지정하세요 */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 오른쪽 그림자 추가 */
 `;
 
 const Logo = styled.img`

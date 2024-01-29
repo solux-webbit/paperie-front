@@ -7,7 +7,8 @@ const ContentContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, #FAFBFF, #D8E3FA);
+  background-color: #FAFBFF;    /*배경색: 연한 하늘색*/
+  /*background-color: #F5F6FB;*/
   padding: 20px;
 `;
 
