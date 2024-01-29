@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createRoot } from 'react-dom/client'; 
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import styled from "styled-components";
 import "./join.css";
 import handImg from "../assets/handImg.png";
@@ -72,7 +72,7 @@ const Join_hello = () => {
 
 
   return (
-    <>
+    <Router>
     <div className="BoxStyle">
       <BackContainer>
       <Link to="/">
@@ -127,7 +127,7 @@ const Join_hello = () => {
         <img src={logo} style={{width: '250px', height: '250px'}}/>
       </div>
     </div>
-    </>
+    </Router>
   );
 };
 
