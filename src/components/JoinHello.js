@@ -16,6 +16,7 @@ const Join_hello = () => {
     display: flex;
     flex-direction: column;
     align-items: left;
+
   `;
 
   const InputContainer = styled.div`
