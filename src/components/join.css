@@ -80,7 +80,7 @@ body {
 
 .SignUpButton{
   width: 200px;
-  background-color: #5577EF;
+  background-color: #5366BA;
   color: white; 
   padding: 10px 15px; 
   border: none; 
@@ -91,7 +91,7 @@ body {
 }
 
 .SignUpButton:hover {
-  background-color: #00539F; /* 마우스 호버 시 배경색 변경 */
+  background: linear-gradient(to right, #435399, #001165); /* 마우스 호버 시 그라데이션 배경색 변경 */
 }
 
 .SignUpText{
