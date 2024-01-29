@@ -1,5 +1,4 @@
-import React, {  useEffect, useState,  Component, Fragment } from 'react';
-import Button from 'react-bootstrap/Button';
+import React, {  useEffect, useState } from 'react';
 import "./table.css";
 import copy_img from "../assets/copy_img.png"
 import { motion, useAnimation } from 'framer-motion';
