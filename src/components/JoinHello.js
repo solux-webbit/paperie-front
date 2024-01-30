@@ -10,12 +10,7 @@ import logo from "../assets/paperielogo.png";
 import google from "../assets/google_login.png";
 import back from "../assets/back_button.png";
 
-const Join_hello = () => {
-  const [IDValue, setIDValue] = useState("");
-  const [PWValue, setPWValue] = useState("");
-  const [PWCValue, setPWCValue] = useState("");
-
-  const BackContainer = styled.div`
+const BackContainer = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 10px;
@@ -52,6 +47,12 @@ const Join_hello = () => {
   align-items: center;
 `;
 
+const Join_hello = () => {
+  const [IDValue, setIDValue] = useState("");
+  const [PWValue, setPWValue] = useState("");
+  const [PWCValue, setPWCValue] = useState("");
+
+
   const handleID = (e) => {
     setIDValue(e.target.value);
   };
@@ -74,7 +75,7 @@ const Join_hello = () => {
 
 
   return (
-    <Router>
+    <>
     <div className="BoxStyle">
       <BackContainer>
       <Link to="/">
@@ -129,7 +130,7 @@ const Join_hello = () => {
         <img src={logo} style={{width: '250px', height: '250px'}}/>
       </div>
     </div>
-    </Router>
+    </>
   );
 };
 
@@ -137,4 +138,3 @@ export default Join_hello;
 
 const root = createRoot(document.getElementById("root"));
 root.render(<Join_hello />);
-
