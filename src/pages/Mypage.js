@@ -4,14 +4,12 @@ import React, { useState } from "react";
 import { createRoot } from "react-dom";
 import "./mypage.css";
 import arrow from "../assets/arrow.png"
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { NavLink, useLocation } from "react-router-dom";
+import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
+import { NavLink, useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import paperielogo from "../assets/paperielogo.png";
 import Mysidebar from "../components/Mysidebar.js";
-import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Mypage = () => { 
 
@@ -29,13 +27,21 @@ const Mypage = () => {
         </h3>
         <Navbar bg="light" data-bs-theme="light">
         <Container className="navbar">
-          <Navbar.Brand href="#home"/>
+          <Navbar.Brand href="#all" className="my_menu">전체</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#paper">논문</Nav.Link>
-            <Nav.Link href="#book">책</Nav.Link>
-            <Nav.Link href="#article">기사</Nav.Link>
-            <Nav.Link href="#law">법</Nav.Link>
+            <Nav.Link href="#paper" className="my_menu">논문</Nav.Link>
+            <Nav.Link href="#book" className="my_menu">책</Nav.Link>
+            <Nav.Link href="#article" className="my_menu">기사</Nav.Link>
+            <Nav.Link href="#law" className="my_menu">법</Nav.Link>
           </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="키워드로 검색"
+              className="me-2"
+              aria-label="Search"/>
+            <Button variant="outline-info" className="search">검색</Button>
+          </Form>
         </Container>
       </Navbar>
     </div>

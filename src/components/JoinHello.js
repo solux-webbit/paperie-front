@@ -10,12 +10,7 @@ import logo from "../assets/paperielogo.png";
 import google from "../assets/google_login.png";
 import back from "../assets/back_button.png";
 
-const Join_hello = () => {
-  const [IDValue, setIDValue] = useState("");
-  const [PWValue, setPWValue] = useState("");
-  const [PWCValue, setPWCValue] = useState("");
-
-  const BackContainer = styled.div`
+const BackContainer = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 10px;
@@ -25,32 +20,37 @@ const Join_hello = () => {
   left: 10px;
 `;
 
-  const HelloContainer = styled.div`
-    margin-bottom: 30px; /* 아이디창과의 거리 */
-    display: flex;
-    flex-direction: column;
-    align-items: left;
+const HelloContainer = styled.div`
+  margin-bottom: 30px; /* 아이디창과의 거리 */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
   `;
 
-  const InputContainer = styled.div`
-    margin-bottom: 40px; /* 회원가입 버튼과의 거리 */
-    display: flex;
-    flex-direction: column;
-    align-items: left;
+const InputContainer = styled.div`
+  margin-bottom: 40px; /* 회원가입 버튼과의 거리 */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
   `;
   
-  const SignUpContainer = styled.div`
+const SignUpContainer = styled.div`
   margin-bottom: 30px; /* 간단로그인 버튼과의 거리 */
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-  const SocialContainer = styled.div`
+const SocialContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+
+const Join_hello = () => {
+  const [IDValue, setIDValue] = useState("");
+  const [PWValue, setPWValue] = useState("");
+  const [PWCValue, setPWCValue] = useState("");
 
   const handleID = (e) => {
     setIDValue(e.target.value);
