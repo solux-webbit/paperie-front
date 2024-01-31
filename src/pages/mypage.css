@@ -1,3 +1,5 @@
+/*src\pages\mypage.css*/
+
 body {
     background-color: #FAFBFF;
 }
@@ -14,7 +16,6 @@ body {
 .goback {
     border: none;
     background-color: rgba(0,0,0,0);
-
 }
 
 .arrow {
@@ -25,11 +26,26 @@ body {
 .ref_history {
     margin-top: 20px;
     font-size: 25px;
-    font-weight: 900px;
+    font-weight: 900;
     color: #696969;
 }
 
 .navbar {
     margin-top: 30px;
-    width: auto;
+    width: 900px;
+}
+
+.my_menu {
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+.me-2 {
+    width: 200px;
+}
+
+.search {
+    margin-right: 30px;
+    font-size: 15px;
+    width: 60px;
 }

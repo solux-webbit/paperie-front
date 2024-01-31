@@ -1,3 +1,5 @@
+// src\components\search.js
+
 import React, { useState } from "react";
 import { createRoot } from "react-dom";
 import handImg from "../assets/handImg.png";

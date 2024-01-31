@@ -1,3 +1,5 @@
+//src\pages\Join.js
+
 import React, { useState } from "react";
 import { createRoot } from 'react-dom/client';
 import styled from "styled-components";

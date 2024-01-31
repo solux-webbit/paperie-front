@@ -1,3 +1,5 @@
+//src\components\References.js
+
 import React, {  useEffect, useState } from 'react';
 import "./table.css";
 import copy_img from "../assets/copy_img.png"

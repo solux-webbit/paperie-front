@@ -1,4 +1,4 @@
-//ArticlePage.js
+// src\pages\ArticlePage.js
 
 import React from "react";
 import styled from "styled-components";
