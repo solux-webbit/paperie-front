@@ -14,16 +14,15 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/book" component={BookPage} />
-              <Route path="/article" component={ArticlePage} />
-              <Route path="/law" component={LawPage} />
-              <Route path="/help" component={HelpPage} />
-              <Route path="/join" component={Join} />
-              <Route path="/mypage" component={Mypage} />
-            </Switch>
-          
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/book" component={BookPage} />
+          <Route path="/article" component={ArticlePage} />
+          <Route path="/law" component={LawPage} />
+          <Route path="/help" component={HelpPage} />
+          <Route path="/join" component={Join} />
+          <Route path="/mypage" component={Mypage} />
+        </Switch>
       </BrowserRouter>
     );
   }
