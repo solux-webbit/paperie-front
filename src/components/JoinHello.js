@@ -137,4 +137,3 @@ export default Join_hello;
 
 const root = createRoot(document.getElementById("root"));
 root.render(<Join_hello />);
-
