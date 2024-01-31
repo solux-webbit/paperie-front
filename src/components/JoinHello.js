@@ -72,7 +72,7 @@ const Join_hello = () => {
   }
 
   return (
-    <Router>
+    <>
     <div className="BoxStyle">
       <BackContainer>
       <Link to="/">
@@ -127,7 +127,7 @@ const Join_hello = () => {
         <img src={logo} style={{width: '250px', height: '250px'}}/>
       </div>
     </div>
-    </Router>
+    </>
   );
 };
 
