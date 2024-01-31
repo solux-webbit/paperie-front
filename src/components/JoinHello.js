@@ -7,59 +7,60 @@ import handImg from "../assets/handImg.png";
 import logo from "../assets/paperielogo.png";
 import google from "../assets/google_login.png";
 import back from "../assets/back_button.png";
+const BackContainer = styled.div`
+display: flex;
+align-items: flex-start;
+margin-top: 10px;
+margin-left: 10px;
+position: absolute;
+top: 10px;
+left: 10px;
+`;
+
+const HelloContainer = styled.div`
+  margin-bottom: 30px; /* 아이디창과의 거리 */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+`;
+
+const InputContainer = styled.div`
+  margin-bottom: 40px; /* 회원가입 버튼과의 거리 */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+`;
+
+const SignUpContainer = styled.div`
+margin-bottom: 30px; /* 간단로그인 버튼과의 거리 */
+display: flex;
+flex-direction: column;
+align-items: center;
+`;
+
+const SocialContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+`;
 
 const Join_hello = () => {
   const [IDValue, setIDValue] = useState("");
   const [PWValue, setPWValue] = useState("");
   const [PWCValue, setPWCValue] = useState("");
 
-  const BackContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-top: 10px;
-  margin-left: 10px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-`;
 
-  const HelloContainer = styled.div`
-    margin-bottom: 30px; /* 아이디창과의 거리 */
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-  `;
 
-  const InputContainer = styled.div`
-    margin-bottom: 40px; /* 회원가입 버튼과의 거리 */
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-  `;
-  
-  const SignUpContainer = styled.div`
-  margin-bottom: 30px; /* 간단로그인 버튼과의 거리 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-  const SocialContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-  const handleID = (e) => {
-    setIDValue(e.target.value);
+  const handleID = () => {
+    // setIDValue();
   };
 
-  const handlePW = (e) => {
-    setPWValue(e.target.value);
+  const handlePW = () => {
+   
   };
 
-  const handlePWC = (e) => {
-    setPWCValue(e.target.value);
+  const handlePWC = () => {
+ 
   };
 
   const SignUp = () => {
@@ -70,9 +71,9 @@ const Join_hello = () => {
      /*구글로그인 함수*/
   }
 
-
   return (
     <>
+
     <div className="BoxStyle">
       <BackContainer>
       <Link to="/">
@@ -98,14 +99,14 @@ const Join_hello = () => {
           />
           <input
             className="InputBoxStyle"
-            type="text"
+            type="password"
             placeholder="비밀번호"
             value={PWValue}
             onChange={(e) => setPWValue(e.target.value)}
           />
           <input
             className="InputBoxStyle"
-            type="text"
+            type="password"
             placeholder="비밀번호 재확인"
             value={PWCValue}
             onChange={(e) => setPWCValue(e.target.value)}
@@ -113,11 +114,11 @@ const Join_hello = () => {
         </InputContainer>
         <SignUpContainer>
         <div className="RedText">모든 항목은 필수항목입니다.</div>
-        <button class="SignUpButton">회원가입하기</button>
+        <button className="SignUpButton">회원가입하기</button>
         </SignUpContainer>
         <SocialContainer>
           <h6 className="SocialText">소셜 계정으로 간편하게 로그인하기</h6>
-          <div className="Google"  onclick={googleLogin}>
+          <div className="Google"  onClick={googleLogin}>
           <img src={google}/>
           </div>
         </SocialContainer>
