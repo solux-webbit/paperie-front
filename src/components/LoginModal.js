@@ -4,8 +4,27 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-awesome-modal';
 import { Link } from "react-router-dom";
 import "./SignIn.css";
+import axios from "axios";
 
 const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin= async () => {
+    try{
+    const response = await axios.post("http://127.0.0.1:8000/accounts/api/token/", {
+        username, 
+        password, 
+      });
+      // 로그인이 성공한 경우에 대한 처리
+      console.log(response.data);
+    } catch (error) {
+      // 로그인이 실패한 경우에 대한 처리
+      console.error("로그인 실패:", error);
+    }
+  };
+
   return (
     <Modal
       visible={visible}
@@ -32,8 +51,9 @@ const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
                 name="Id"
                 className="login_id"
                 type="text"
-                placeholder="아이디 혹은 이메일 주소"
-                onChange={changeID}
+                placeholder="아이디"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
@@ -43,7 +63,8 @@ const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
                 className="login_pwd"
                 type="password"
                 placeholder="비밀번호"
-                onChange={changePW}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -56,7 +77,7 @@ const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
             </div>
 
             <div className="submit_div">
-              <div><input type="button" value="로그인" /></div>
+              <div><input type="button" value="로그인" onClick={handleLogin}/></div>
             </div>
           </div>
         </form>

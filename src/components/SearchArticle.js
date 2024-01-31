@@ -158,5 +158,4 @@ const SearchArticle = () => {
 };
 
 export default SearchArticle;
-const root = createRoot(document.getElementById("root"));
-root.render(<SearchArticle />);
+
