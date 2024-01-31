@@ -34,13 +34,11 @@ const Join = () => {
     <JoinContainer>
       <div className="BoxStyle">
       <BackContainer>
-        <Router>
-      <Link to="/">
+        <Link to="/">
         <div className="BackButton">
           <img src={back} alt="뒤로가기" />
         </div>
         </Link>
-        </Router>
       </BackContainer>
       <div className="LeftContent">
         <JoinHello/>
@@ -57,5 +55,3 @@ const Join = () => {
 
 export default Join;
 
-const root = createRoot(document.getElementById("root"));
-root.render(<Join />);

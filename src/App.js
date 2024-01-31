@@ -1,6 +1,6 @@
 // src\App.js
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; // 부트스트랩 임포트
 import HomePage from "./pages/HomePage.js"
 import Join from "./pages/Join.js";
@@ -13,7 +13,7 @@ import Mypage from "./pages/Mypage.js";
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/book" component={BookPage} />
@@ -23,7 +23,7 @@ class App extends React.Component {
           <Route path="/join" component={Join} />
           <Route path="/mypage" component={Mypage} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
