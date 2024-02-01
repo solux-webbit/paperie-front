@@ -36,9 +36,9 @@ const SearchArticle = () => {
         searchValue: searchValue,
       };
 
-      // POST 요청 API URL
-      const postApiUrl = 'http://127.0.0.1:8000/api/news';
-      const postResponse = await axios.post(postApiUrl, requestData);
+      // // POST 요청 API URL
+      // const postApiUrl = 'http://127.0.0.1:8000/api/news';
+      // const postResponse = await axios.post(postApiUrl, requestData);
 
       // GET 요청 API URL
       const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
