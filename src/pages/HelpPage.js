@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
+import Aboutus from "../assets/Aboutus.png";
 
 const ContentContainer = styled.div`
   flex: 1;
@@ -19,7 +20,18 @@ const HelpPage = () => {
         <Sidebar />
         <ContentContainer>
         <TopBar />
-        <h1> 도움말 페이지입니다~ </h1>
+        <h1> About Us </h1>
+        <br></br>
+        <h3> 숙명여자대학교 유일무이 중앙 코딩동아리</h3>
+        <h3> SOLUX Team WEBIT</h3>
+        <img src={Aboutus} alt="우리 사진" />
+        <br></br>
+        <br></br>
+        <h3> 팀장 : 한지수<br></br>
+        팀원 : 김유진, 유윤지, 이유정, 조채림<br></br>
+
+        </h3>
+
         </ContentContainer>
         </>
       );
