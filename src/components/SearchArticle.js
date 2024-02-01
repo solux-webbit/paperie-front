@@ -87,7 +87,7 @@ import axios from "axios";
 import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
-import Result from "./Result";
+import ResultArticle from "./ResultArticle";
 
 const SearchArticle = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -152,7 +152,7 @@ const SearchArticle = () => {
           />
         </div>
       </div>
-      <Result results={searchResults} />
+      <ResultArticle results={searchResults} />
     </>
   );
 };

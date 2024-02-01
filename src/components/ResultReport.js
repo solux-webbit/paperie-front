@@ -71,8 +71,9 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
+import axios from "axios";
 
-function Result({ results }) {
+function ResultReport({ results }) {
   const controls = useAnimation();
 
   useEffect(() => {
@@ -87,6 +88,18 @@ function Result({ results }) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [controls]);
+  
+  const handleCellClick = (reportTitle) => {
+    console.log('선택된 제목: ', reportTitle);
+    axios.get(`http://127.0.0.1:8000/apa/news?selected_title=${reportTitle}`)
+    .then(response => {
+      console.log("성공: ", response.data);
+    })
+    .catch(error => {
+      console.error("실패: ", error);
+    })
+
+  };
 
   return (
     <motion.div
@@ -106,7 +119,7 @@ function Result({ results }) {
           {results && results.length > 0 ? (
             results.map((result, index) => (
               <tr key={index} className="result_name">
-                <td>{result.articleTitle}</td>
+                <td onClick={() => handleCellClick(result.reportTitle)}>{result.reportTitle}</td>
               </tr>
             ))
           ) : (
@@ -120,4 +133,4 @@ function Result({ results }) {
   );
 }
 
-export default Result;
+export default ResultReport;
