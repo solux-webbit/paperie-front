@@ -34,7 +34,7 @@ const Results = ({ searchResults }) => {
           {searchResults && searchResults.length > 0 ? (
             searchResults.map((result, index) => (
               <tr key={index} className="result_name">
-                <td>{result.articleTitle}</td> {/* 실제 데이터 구조에 따라 속성 이름 조정 */}
+                <td>{result.q}</td> {/* 실제 데이터 구조에 따라 속성 이름 조정 */}
               </tr>
             ))
           ) : (
