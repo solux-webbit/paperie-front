@@ -29,7 +29,7 @@ left: 10px;
 `;
 
 
-const Join = () => {
+const JoinPage = () => {
   return (
     <JoinContainer>
       <div className="BoxStyle">
@@ -53,5 +53,5 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default JoinPage;
 

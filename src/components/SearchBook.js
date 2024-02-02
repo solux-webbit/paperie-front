@@ -81,5 +81,3 @@ const Search_book = () => {
 
 export default Search_book;
 
-const root = createRoot(document.getElementById("root"));
-root.render(<Search_book />);

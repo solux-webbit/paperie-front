@@ -7,15 +7,16 @@ import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
 import Results from "./Result";
 
+
 const SearchArticle = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]); // 검색 결과를 저장할 상태
 
+  // 스타일 관련 변수들
   const inputGroupStyle = {
     display: "flex",
     alignItems: "center",
   };
-
   const inputBoxStyle = {
     width: "845px",
     padding: "30px",
@@ -25,18 +26,19 @@ const SearchArticle = () => {
     boxShadow: "5px 5px 5px -3px #B5B7C0",
     outline: "none",
   };
-
   const searchButtonStyle = {
     marginLeft: "-90px",
     padding: "10px",
     cursor: "pointer",
   };
 
+  // 검색 버튼 클릭 시 실행되는 함수
   const handleSearch = async () => {
     try {
       const requestData = {
         searchValue: searchValue,
       };
+
 
       const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);

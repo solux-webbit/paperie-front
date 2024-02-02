@@ -77,4 +77,6 @@ const SearchReport = () => {
   );
 };
 
+
 export default SearchReport;
+

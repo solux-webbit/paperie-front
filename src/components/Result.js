@@ -3,19 +3,23 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
+import References from './References';
 
 const Results = ({ searchResults }) => {
   const controls = useAnimation();
-  const [showNoResultsMessage, setShowNoResultsMessage] = useState(true);
+  const [showNoResultsMessage, setShowNoResultsMessage] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
+      // 스크롤 위치에 따라 애니메이션 컨트롤
       const scrollY = window.scrollY;
-      controls.start({ opacity: scrollY > 200 ? 1 : 0.1 });
+      controls.start({ opacity: scrollY > 200 ? 1 : 0.1 }); // 스크롤 위치에 따라 opacity 조절
     };
 
+    // 스크롤 이벤트 리스너 추가
     window.addEventListener('scroll', handleScroll);
 
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -39,8 +43,10 @@ const Results = ({ searchResults }) => {
           {searchResults && searchResults.length > 0 ? (
             searchResults.map((result, index) => (
               <tr key={index} className="result_name">
-                <td>{result.title}</td>
-              </tr>
+              <td>
+                <References title={result.title} />
+              </td>
+            </tr>
             ))
           ) : !showNoResultsMessage ? (
             <tr>
