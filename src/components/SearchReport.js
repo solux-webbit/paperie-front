@@ -35,12 +35,12 @@ const SearchReport = () => {
   const handleSearch = async () => {
     try {
       const requestData = {
-        searchValue: searchValue,
+        query: searchValue, // 수정: query로 변경
       };
-
+  
       const getApiUrl = `http://127.0.0.1:8000/api/scholars?query=${encodeURIComponent(requestData.query)}`;
       const getResponse = await axios.get(getApiUrl);
-
+  
       const searchResults = getResponse.data.results || [];
       setSearchResults(searchResults);
       console.log("list-------", searchResults);
