@@ -5,15 +5,17 @@ import axios from "axios";
 import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
-import "./search.css"; // Assuming there is a CSS file for styling
+import Results from "./Result";
 
-const Search_report = () => {
+const SearchArticle = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const inputGroupStyle = {
     display: "flex",
     alignItems: "center",
   };
+
   const inputBoxStyle = {
     width: "845px",
     padding: "30px",
@@ -32,25 +34,18 @@ const Search_report = () => {
 
   const handleSearch = async () => {
     try {
-      // 요청 페이로드
       const requestData = {
-        query: searchValue,
-        // 다른 필요한 데이터가 있다면 추가하세요
+        searchValue: searchValue,
       };
 
-      // 백엔드 API 엔드포인트 URL
-      const apiUrl = `http://127.0.0.1:8000/api/scholars?query=${encodeURIComponent(requestData.query)}`;
+      const getApiUrl = `http://127.0.0.1:8000/api/scholars?query=${encodeURIComponent(requestData.query)}`;
+      const getResponse = await axios.get(getApiUrl);
 
-      // 백엔드로 POST 요청 보내기
-      const response = await axios.post(apiUrl, requestData);
-
-      // 백엔드 응답 처리 (필요시)
-      console.log(response.data);
-
-      // 응답에 기반한 추가 작업이 필요하면 수행하세요
+      const searchResults = getResponse.data.results || [];
+      setSearchResults(searchResults);
+      console.log("list-------", searchResults);
     } catch (error) {
-      // 요청 중 발생한 오류 처리
-      console.error('백엔드로 데이터를 전송하는 동안 오류 발생:', error.message);
+      console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }
   };
 
@@ -76,11 +71,10 @@ const Search_report = () => {
           />
         </div>
       </div>
+
+      <Results searchResults={searchResults} />
     </>
   );
 };
 
-export default Search_report;
-
-const root = createRoot(document.getElementById("root"));
-root.render(<Search_report />);
+export default SearchArticle;

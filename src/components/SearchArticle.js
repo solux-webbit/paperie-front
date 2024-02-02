@@ -1,19 +1,21 @@
+// SearchArticle.js
+
 import React, { useState } from "react";
 import axios from "axios";
 import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
-import Results from "./Result"; // Results 컴포넌트를 가져옵니다.
+import Results from "./Result";
 
 const SearchArticle = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [searchResults, setSearchResults] = useState([]); // 검색 결과를 저장할 상태
+  const [searchResults, setSearchResults] = useState([]);
 
-  // 스타일 관련 변수들
   const inputGroupStyle = {
     display: "flex",
     alignItems: "center",
   };
+
   const inputBoxStyle = {
     width: "845px",
     padding: "30px",
@@ -23,31 +25,25 @@ const SearchArticle = () => {
     boxShadow: "5px 5px 5px -3px #B5B7C0",
     outline: "none",
   };
+
   const searchButtonStyle = {
     marginLeft: "-90px",
     padding: "10px",
     cursor: "pointer",
   };
 
-  // 검색 버튼 클릭 시 실행되는 함수
   const handleSearch = async () => {
     try {
       const requestData = {
         searchValue: searchValue,
       };
 
-      // // POST 요청 API URL
-      // const postApiUrl = 'http://127.0.0.1:8000/api/news';
-      // const postResponse = await axios.post(postApiUrl, requestData);
-
-      // GET 요청 API URL
       const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);
 
-      const searchResults = getResponse.data.data.results;
+      const searchResults = getResponse.data.results || [];
       setSearchResults(searchResults);
       console.log("list-------", searchResults);
-
     } catch (error) {
       console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }
@@ -76,7 +72,6 @@ const SearchArticle = () => {
         </div>
       </div>
 
-      {/* 검색 결과를 Results 컴포넌트에 전달합니다. */}
       <Results searchResults={searchResults} />
     </>
   );
