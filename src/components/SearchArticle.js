@@ -44,10 +44,10 @@ const SearchArticle = () => {
       const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);
 
-      const searchResults = getResponse.data; // 실제 응답 구조에 따라 조정
+      const searchResults = getResponse.data.data.results;
       setSearchResults(searchResults);
+      console.log("list-------", searchResults);
 
-      console.log(searchResults);
     } catch (error) {
       console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }
