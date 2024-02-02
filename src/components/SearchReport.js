@@ -7,7 +7,7 @@ import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
 import Results from "./Result";
 
-const SearchArticle = () => {
+const SearchReport = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -77,4 +77,4 @@ const SearchArticle = () => {
   );
 };
 
-export default SearchArticle;
+export default SearchReport;
