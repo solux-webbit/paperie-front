@@ -1,4 +1,4 @@
-// //src\components\TopBar.js
+// src/components/TopBar.js
 
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -23,6 +23,7 @@ class TopBar extends React.Component {
       isModalVisible: false,
       id: "",
       password: "",
+      isLoggedIn: false, // 추가: 로그인 상태를 저장하는 state
     };
   }
 
@@ -54,16 +55,34 @@ class TopBar extends React.Component {
     });
   }
 
+  handleLogout = () => {
+    this.setState({
+      isLoggedIn: false,
+    });
+  };
+
+  handleLoginSuccess = () => {
+    this.setState({
+      isModalVisible: false,
+      isLoggedIn: true,
+    });
+  };
+
   render() {
     console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
     return (
       <TopBarWrapper>
-        <Button variant="light" onClick={() => this.openModal()}>login</Button>&nbsp;
+        {this.state.isLoggedIn ? (
+          <Button variant="light" onClick={this.handleLogout}>logout</Button>
+        ) : (
+          <Button variant="light" onClick={() => this.openModal()}>login</Button>
+        )}
         <LoginModal
           visible={this.state.isModalVisible}
           closeModal={() => this.closeModal()}
           changeID={() => this._changeID()}
           changePW={() => this._changePW()}
+          onLoginSuccess={this.handleLoginSuccess}
         />
         <Link to="/mypage">
           <Button variant="light">mypage</Button>
@@ -74,6 +93,86 @@ class TopBar extends React.Component {
 }
 
 export default TopBar;
+
+
+////////////////////////////////////////////////////////////////////////////////
+// // //src\components\TopBar.js
+
+// import React, { useState } from "react";
+// import styled from "styled-components";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Button from 'react-bootstrap/Button';
+// import { Link } from "react-router-dom";
+// import LoginModal from "./LoginModal"; 
+// import "./SignIn.css";
+
+// const TopBarWrapper = styled.div`
+//   display: flex;
+//   justify-content: flex-end;
+//   padding: 10px 20px;
+//   background-color: #FAFBFF;
+// `;
+
+// class TopBar extends React.Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       isModalVisible: false,
+//       id: "",
+//       password: "",
+//     };
+//   }
+
+//   _changeID = function () {
+//     const id_v = document.getElementsByName('Id')[0].value;
+
+//     this.setState({
+//       id: id_v,
+//     });
+//   }
+
+//   _changePW = function () {
+//     const pw_v = document.getElementsByName("Pwd")[0].value;
+
+//     this.setState({
+//       password: pw_v,
+//     });
+//   }
+
+//   openModal = function () {
+//     this.setState({
+//       isModalVisible: true,
+//     });
+//   }
+
+//   closeModal = function () {
+//     this.setState({
+//       isModalVisible: false,
+//     });
+//   }
+
+//   render() {
+//     console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
+//     return (
+//       <TopBarWrapper>
+//         <Button variant="light" onClick={() => this.openModal()}>login</Button>&nbsp;
+//         <LoginModal
+//           visible={this.state.isModalVisible}
+//           closeModal={() => this.closeModal()}
+//           changeID={() => this._changeID()}
+//           changePW={() => this._changePW()}
+//         />
+//         <Link to="/mypage">
+//           <Button variant="light">mypage</Button>
+//         </Link>
+//       </TopBarWrapper>
+//     );
+//   }
+// }
+
+// export default TopBar;
+///////////////////////////////////////////////////////////////////////////
 
 
 // import React, { useState } from "react";
