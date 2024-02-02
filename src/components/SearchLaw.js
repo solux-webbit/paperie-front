@@ -81,5 +81,3 @@ const Search_law = () => {
 
 export default Search_law;
 
-const root = createRoot(document.getElementById("root"));
-root.render(<Search_law />);

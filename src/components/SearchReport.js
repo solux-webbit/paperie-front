@@ -82,5 +82,3 @@ const Search_report = () => {
 
 export default Search_report;
 
-const root = createRoot(document.getElementById("root"));
-root.render(<Search_report />);

@@ -1,17 +1,22 @@
 //src\pages\Mypage.js
 
-import React, { useState } from "react";
-import { createRoot } from "react-dom";
+import React from "react";
 import "./mypage.css";
 import arrow from "../assets/arrow.png"
-import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
-import { NavLink, useLocation, Link } from "react-router-dom";
+import {Navbar, Nav, Form, Button, Container} from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import paperielogo from "../assets/paperielogo.png";
 import Mysidebar from "../components/Mysidebar.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ArticleMypage from "../components/ArticleMypage.js";
+import BookMypage from "../components/BookMypage.js";
+import ReportMypage from "../components/ReportMypage.js";
 
-const Mypage = () => { 
+const handleLink = () => {
+//링크버튼 처리
+}
+
+const Mypage = ({ results }) => { 
 
   return (
     <>
@@ -44,6 +49,26 @@ const Mypage = () => {
           </Form>
         </Container>
       </Navbar>
+      <table className="caption-top table-borderless table-hover">
+        <tbody>
+        {results && results.length > 0 ? (
+        results.map((result, index) => {
+        const themeClassName = result.type === '책' ? 'book' : result.type === '기사' ? 'article' : result.type === '논문' ? 'report' : '';
+        return (
+          <tr key={index} className={themeClassName}>
+          <td>{result.articleTitle}</td>
+          </tr>
+          );
+        })
+      ) : (
+        <>
+           <BookMypage/>
+           <ArticleMypage/>
+           <ReportMypage/>
+           </>
+          )}
+        </tbody>
+      </table>
     </div>
     </>
   );

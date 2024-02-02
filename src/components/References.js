@@ -4,14 +4,20 @@ import React, {  useEffect, useState } from 'react';
 import "./table.css";
 import copy_img from "../assets/copy_img.png"
 import { motion, useAnimation } from 'framer-motion';
+import axios from "axios";
 
-function References() {
+function References({result_title}) {
 
   const controls = useAnimation();
   const [apa, setApa] = useState("Smith, J. A. (2022). Climate Change and Its Impact on Biodiversity. Environmental Science Journal, 28(3), 123-145.");
   const [chicago, setChicago] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal 28, no. 3 (2022): 123-145.`);
   const [mla, setMla] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal, vol. 28, no. 3, 2022, pp. 123-145.`);
   const [van, setVan] = useState("Smith JA. Climate Change and Its Impact on Biodiversity. Environmental Science Journal. 2022;28(3):123-145.");
+
+  const [type, setType]= useState();
+  const [ref, setRef]=useState();
+  const [title, setTitle]= useState();
+
   
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +45,21 @@ function References() {
     }
   };
 
+  const handleToMypage = async (reference) =>{
+    try{
+      const response = await axios.post("http://127.0.0.1:8000/mypage/get?title={title}&ref={ref}", {
+        title: result_title,
+        ref : reference,
+        type : "article",
+        content: {reference},
+
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error("Mypage로 옮기기 실패", error);
+      }
+  }
+
   return (
     <motion.div
     initial={{ opacity: 0.0 }}
@@ -61,7 +82,11 @@ function References() {
           <td className='refer_type' scope="row" width="200px">APA</td>
           <td id="apaResult" className='apa_result' width="500px">{apa}</td>
           <td>
-            <button type="button" className="copy_button" onClick={() => handleCopyClipBoard(document.getElementById("apaResult").innerHTML)}>
+            <button type="button" className="copy_button" 
+            onClick={() => {
+                            handleCopyClipBoard(document.getElementById("apaResult").innerHTML);
+                            handleToMypage(apa);
+                          }}>
               <div>
                 <img className="copy_img" src={copy_img}/>
                 Copy
