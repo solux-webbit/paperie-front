@@ -1,9 +1,12 @@
+// SearchArticle.js
+
 import React, { useState } from "react";
 import axios from "axios";
 import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
-import Results from "./Result"; // Results 컴포넌트를 가져옵니다.
+import Results from "./Result";
+
 
 const SearchArticle = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -36,18 +39,13 @@ const SearchArticle = () => {
         searchValue: searchValue,
       };
 
-      // // POST 요청 API URL
-      // const postApiUrl = 'http://127.0.0.1:8000/api/news';
-      // const postResponse = await axios.post(postApiUrl, requestData);
 
-      // GET 요청 API URL
       const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);
 
-      const searchResults = getResponse.data; // 실제 응답 구조에 따라 조정
+      const searchResults = getResponse.data.results || [];
       setSearchResults(searchResults);
-      console.log("list-------", getResponse.data);
-      console.log(searchResults);
+      console.log("list-------", searchResults);
     } catch (error) {
       console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }
@@ -76,7 +74,6 @@ const SearchArticle = () => {
         </div>
       </div>
 
-      {/* 검색 결과를 Results 컴포넌트에 전달합니다. */}
       <Results searchResults={searchResults} />
     </>
   );

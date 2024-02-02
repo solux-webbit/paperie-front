@@ -1,80 +1,13 @@
-// // src\components\Result.js
+// Result.js
 
-// import React, { useEffect } from 'react';
-// import { motion, useAnimation } from 'framer-motion';
-// import "./result.css";
-
-// function References() {
-//   const controls = useAnimation();
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const scrollY = window.scrollY;
-//       controls.start({ opacity: scrollY > 200 ? 1 : 0.1 });
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, [controls]);
-
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0.0 }}
-//       animate={controls}
-//       transition={{ ease: "easeInOut", duration: 0.2 }}
-//       className="result_border"
-//     >
-//       <table className="caption-top table-borderless table-hover">
-//         <caption className="result_table_name"> 검색결과 </caption>
-//         <thead>
-//           <tr>
-//             <th className="search_name" scope="col" width="800px">논문제목</th>
-//           </tr>
-//         </thead>
-//          <tbody>
-//           <tr className="result_name">
-//             {/*이곳에 backend에서 받은 기사 제목 검색 결과를 작성 */}
-//           </tr>
-//           <tr className="result_name">
-//             {/*이곳에 backend에서 받은 기사 제목 검색 결과를 작성 */}
-//           </tr>
-//           <tr className="result_name">
-//             {/*이곳에 backend에서 받은 기사 제목 검색 결과를 작성 */}
-//           </tr>
-//           <tr className="result_name">
-//             {/*이곳에 backend에서 받은 기사 제목 검색 결과를 작성 */}
-//           </tr>
-//           <tr className="result_name">
-//             {/*이곳에 backend에서 받은 기사 제목 검색 결과를 작성 */}
-//           </tr>
-//           <tr className="result_name">
-//             {/*이곳에 backend에서 받은 기사 제목 검색 결과를 작성 */}
-//           </tr>
-//           <tr className="result_name">
-//           </tr>
-//           <tr className="result_name">
-//           </tr>
-//           <tr className="result_name">
-//           </tr>
-//           <tr className="result_name">
-//           </tr>
-//          </tbody>
-//         </table>
-//   </motion.div>
-//   );
-// }
-
-// export default References;
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
 import References from './References';
 
 const Results = ({ searchResults }) => {
-  const controls = useAnimation(); // 애니메이션 컨트롤을 위한 hook 사용
+  const controls = useAnimation();
+  const [showNoResultsMessage, setShowNoResultsMessage] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,6 +24,11 @@ const Results = ({ searchResults }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [controls]);
+
+  useEffect(() => {
+    // Check if there are search results
+    setShowNoResultsMessage(!searchResults || searchResults.length === 0);
+  }, [searchResults]);
 
   return (
     <motion.div
@@ -110,11 +48,11 @@ const Results = ({ searchResults }) => {
               </td>
             </tr>
             ))
-          ) : (
+          ) : !showNoResultsMessage ? (
             <tr>
               <td colSpan="1">검색 결과가 없습니다.</td>
             </tr>
-          )}
+          ) : null}
         </tbody>
       </table>
     </motion.div>
