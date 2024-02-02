@@ -120,13 +120,17 @@ const SearchArticle = () => {
         searchValue: searchValue,
       };
 
-      const apiUrl = 'http://127.0.0.1:8000/api/news?q=' + encodeURIComponent(requestData.searchValue);
+      const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
   
-      const response = await axios.post(apiUrl, requestData);
-  
-      setSearchResults(response.data);
+      const getResponse = await axios.get(getApiUrl);
+
+      const searchResults = getResponse.data.data.results;
+
+      setSearchResults(searchResults);
+      console.log("list-------", searchResults);
+
     } catch (error) {
-      console.error('백엔드로 데이터를 전송하는 동안 오류 발생:', error.message);
+      console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }
   };
 

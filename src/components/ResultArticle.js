@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
 import axios from "axios";
+import References from "./References.js";
 
 function ResultArticle({ results }) {
   const controls = useAnimation();
@@ -19,16 +20,51 @@ function ResultArticle({ results }) {
     };
   }, [controls]);
   
-  const handleCellClick = (articleTitle) => {
-    console.log('선택된 제목: ', articleTitle);
-    axios.get(`http://127.0.0.1:8000/apa/news?selected_title=${articleTitle}`)
-    .then(response => {
-      console.log("성공: ", response.data);
-    })
-    .catch(error => {
-      console.error("실패: ", error);
-    })
+  const handleCellClick = (title) => {
+    try {
+      ///APA
+      const getApaUrl = `http://127.0.0.1:8000/apa/news?selected_title=${title}`;
+  
+      const getApa = await axios.get(getApaUrl);
 
+      const apaResult = getApa.data.data.results;
+
+      ///references.js 변수 set
+      setApa(apaResult);
+
+      ///MLA
+      const getMlaUrl = `http://127.0.0.1:8000/mla/news?selected_title=${title}`;
+  
+      const getMla = await axios.get(getMlaUrl);
+
+      const mlaResult = getMla.data.data.results;
+
+      ///references.js 변수 set
+      setMla(mlaResult;)
+
+      ///CHI
+      const getChiUrl = `http://127.0.0.1:8000/chi/news?selected_title=${title}`;
+  
+      const getChi = await axios.get(getChiUrl);
+
+      const chiResult = getChi.data.data.results;
+
+      ///references.js 변수 set
+      setChicago(chiResult);
+
+      ///VAN
+      const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
+  
+      const getVan = await axios.get(getVanUrl);
+
+      const vanResult = getVan.data.data.results;
+
+      ///references.js 변수 set
+      setVan(vanResult);
+
+    } catch (error) {
+      console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
+    }
   };
 
   return (
@@ -49,7 +85,7 @@ function ResultArticle({ results }) {
           {results && results.length > 0 ? (
             results.map((result, index) => (
               <tr key={index} className="result_name">
-                <td onClick={() => handleCellClick(result.articleTitle)}>{result.articleTitle}</td>
+                <td onClick={() => handleCellClick(result.title)}>{result.title}</td>
               </tr>
             ))
           ) : (
