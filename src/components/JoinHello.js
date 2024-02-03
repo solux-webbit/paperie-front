@@ -12,7 +12,6 @@ const HelloContainer = styled.div`
   flex-direction: column;
   align-items: left;
 `;
-;
 
 const JoinHello = () => {
   
@@ -31,5 +30,3 @@ const JoinHello = () => {
 
 export default JoinHello;
 
-const root = createRoot(document.getElementById("root"));
-root.render(<JoinHello />);

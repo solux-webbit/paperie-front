@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createRoot } from 'react-dom/client'; 
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import "./join.css";
 import google from "../assets/google_login.png";
@@ -27,9 +27,11 @@ align-items: center;
 `
 
 const JoinSignUp = () => {
-    const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+  const history = useHistory();
   
  const handleSignUp = async () => {
     try{
@@ -40,23 +42,14 @@ const JoinSignUp = () => {
       });
       // 회원가입이 성공한 경우에 대한 처리
       console.log(response.data);
+      alert('회원가입 성공! 다시 로그인 해주세요.');
+      history.push("/");
     } catch (error) {
       // 회원가입이 실패한 경우에 대한 처리
       console.error("회원가입 오류:", error);
     }
   };
 
-  const handlePW = async () => {
-   
-  };
-
-  const handlePWC = async () => {
- 
-  };
-
-  const SignUp = () => {
-    /*회원가입 함수*/
-  }
 
   const googleLogin = () =>{
      /*구글로그인 함수*/
@@ -102,6 +95,3 @@ return (
 };
 
 export default JoinSignUp;
-
-const root = createRoot(document.getElementById("root"));
-root.render(<JoinSignUp/>);

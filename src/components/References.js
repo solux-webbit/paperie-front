@@ -1,13 +1,19 @@
 //src\components\References.js
 
-import React, {  useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./table.css";
 import copy_img from "../assets/copy_img.png"
 import { motion, useAnimation } from 'framer-motion';
+import axios from "axios";
 
-function References({ apa, chicago, mla, van }) {
+
+function References({ apa, chicago, mla, van, result_title }) {
 
   const controls = useAnimation();
+  const [type, setType]= useState();
+  const [ref, setRef]=useState();
+  const [title, setTitle]= useState();
+
   
   useEffect(() => {
     const handleScroll = () => {
@@ -49,6 +55,21 @@ function References({ apa, chicago, mla, van }) {
       </td>
     </tr>
   );
+
+  const handleToMypage = async (reference) =>{
+    try{
+      const response = await axios.post("http://127.0.0.1:8000/mypage/get?title={title}&ref={ref}", {
+        title: result_title,
+        ref : reference,
+        type : "article",
+        content: {reference},
+
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error("Mypage로 옮기기 실패", error);
+      }
+  }
 
   return (
     <motion.div

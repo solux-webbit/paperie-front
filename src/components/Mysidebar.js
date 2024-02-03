@@ -53,7 +53,7 @@ function Mysidebar() {
 
   const menus = [
     { name: "과거 인용기록", path: "/mypage", icon: <Icon src={past}/> },
-    { name: "회원정보 수정", path: "/", icon: <Icon src={settings}/> },
+    { name: "회원정보 수정", path: "/profileEditPage", icon: <Icon src={settings}/> },
     { name: "로그아웃", path: "/", icon: <Icon src={logout}/> },
     { name: "회원탈퇴", path: "/", icon: <Icon src={cross}/> },
   ];
