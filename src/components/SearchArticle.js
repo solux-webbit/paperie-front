@@ -5,8 +5,7 @@ import axios from "axios";
 import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
-import Results from "./Result";
-
+import ResultArticle from "./ResultArticle";
 
 const SearchArticle = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -42,10 +41,10 @@ const SearchArticle = () => {
 
       const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);
-
       const searchResults = getResponse.data.results || [];
       setSearchResults(searchResults);
       console.log("list-------", searchResults);
+
     } catch (error) {
       console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }
@@ -73,8 +72,7 @@ const SearchArticle = () => {
           />
         </div>
       </div>
-
-      <Results searchResults={searchResults} />
+      <ResultArticle results={searchResults} />
     </>
   );
 };

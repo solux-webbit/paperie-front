@@ -1,11 +1,12 @@
-// Result.js
+// src\components\ResultReport.js
 
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
+import axios from "axios";
 import References from './References';
 
-const Results = ({ searchResults }) => {
+const ResultReport = ({ searchResults }) => {
   const controls = useAnimation();
   const [showNoResultsMessage, setShowNoResultsMessage] = useState(true)
 
@@ -24,6 +25,18 @@ const Results = ({ searchResults }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [controls]);
+  
+  const handleCellClick = (title) => {
+    console.log('선택된 제목: ', title);
+    axios.get(`http://127.0.0.1:8000/apa/news?selected_title=${title}`)
+    .then(response => {
+      console.log("성공: ", response.data);
+    })
+    .catch(error => {
+      console.error("실패: ", error);
+    })
+
+  };
 
   useEffect(() => {
     // Check if there are search results
@@ -39,15 +52,20 @@ const Results = ({ searchResults }) => {
     >
       <table className="caption-top table-borderless table-hover">
         <caption className="result_table_name"> 검색결과 </caption>
+        <thead>
+          <tr>
+            <th className="search_name" scope="col" width="800px">논문제목</th>
+          </tr>
+        </thead>
         <tbody>
-          {searchResults && searchResults.length > 0 ? (
-            searchResults.map((result, index) => (
-              <tr key={index} className="result_name">
-              <td>
+        {searchResults && searchResults.length > 0 ? (
+          searchResults.map((result, index) => (
+            <tr key={index} className="result_name">
+              <td onClick={() => handleCellClick(result.title)}>
                 <References title={result.title} />
               </td>
             </tr>
-            ))
+          ))
           ) : !showNoResultsMessage ? (
             <tr>
               <td colSpan="1">검색 결과가 없습니다.</td>
@@ -59,4 +77,5 @@ const Results = ({ searchResults }) => {
   );
 };
 
-export default Results;
+export default ResultReport;
+

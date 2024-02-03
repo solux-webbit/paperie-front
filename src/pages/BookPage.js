@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
 import SearchBook from "../components/SearchBook.js";
 import References from "../components/References.js";
-import Result from "../components/Result.js";
+import ResultBook from "../components/ResultBook.js";
 
 const ContentContainer = styled.div`
   flex: 1;
@@ -39,7 +39,7 @@ const ArticlePage = () => {
     <SearchBook/> 
     </SearchContainer>
     <ResultContainer>
-    <Result/>
+    <ResultBook/>
     </ResultContainer>
     <ReferencesContainer> 
     <References /> 
