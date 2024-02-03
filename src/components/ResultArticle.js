@@ -84,6 +84,7 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
               <tr key={index} className="result_name">
                 <td onClick={() => handleCellClick(result.title)}>
                   <References title={result.title} />
+                  {result.title}
                 </td>
               </tr>
             ))
