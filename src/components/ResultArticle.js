@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
 import axios from "axios";
+import References from './References';
 
 
-function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
+function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
   const controls = useAnimation();
 
   useEffect(() => {
