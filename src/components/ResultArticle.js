@@ -74,20 +74,18 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
         <caption className="result_table_name"> 검색결과 </caption>
         <thead>
           <tr>
-            <th className="search_name" scope="col" width="800px">논문제목</th>
+            <th className="search_name" scope="col" width="800px">기사제목</th>
           </tr>
         </thead>
         <tbody>
-          {results && results.length > 0 ? (
-            results.map((result, index) => (
+          {searchResults && searchResults.length > 0 && (
+            searchResults.map((result, index) => (
               <tr key={index} className="result_name">
-                <td onClick={() => handleCellClick(result.title)}>{result.title}</td>
+                <td onClick={() => handleCellClick(result.title)}>
+                  <References title={result.title} />
+                </td>
               </tr>
             ))
-          ) : (
-            <tr>
-              <td colSpan="1">No results found</td>
-            </tr>
           )}
         </tbody>
       </table>
