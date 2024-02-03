@@ -58,19 +58,15 @@ const ResultReport = ({ searchResults }) => {
           </tr>
         </thead>
         <tbody>
-        {searchResults && searchResults.length > 0 ? (
-          searchResults.map((result, index) => (
-            <tr key={index} className="result_name">
-              <td onClick={() => handleCellClick(result.title)}>
-                <References title={result.title} />
-              </td>
-            </tr>
-          ))
-          ) : !showNoResultsMessage ? (
-            <tr>
-              <td colSpan="1">검색 결과가 없습니다.</td>
-            </tr>
-          ) : null}
+          {searchResults && searchResults.length > 0 && (
+            searchResults.map((result, index) => (
+              <tr key={index} className="result_name">
+                <td onClick={() => handleCellClick(result.title)}>
+                  <References title={result.title} />
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </motion.div>

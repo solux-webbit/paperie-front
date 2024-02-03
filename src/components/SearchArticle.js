@@ -38,7 +38,6 @@ const SearchArticle = () => {
         searchValue: searchValue,
       };
 
-
       const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);
       const searchResults = getResponse.data.results || [];

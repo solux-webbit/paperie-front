@@ -8,6 +8,7 @@ import searchImg from "../assets/search.png";
 
 const Search_book = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]); // 검색 결과를 저장할 상태
 
   const inputGroupStyle = {
     display: "flex",
@@ -29,29 +30,24 @@ const Search_book = () => {
     cursor: "pointer",
   };
 
+  
   const handleSearch = async () => {
     try {
-      // 요청 페이로드
       const requestData = {
-        query: searchValue,
-        // 다른 필요한 데이터가 있다면 추가하세요
+        searchValue: searchValue,
       };
 
-      // 백엔드 API 엔드포인트 URL
-      const apiUrl = 'http://127.0.0.1:8000/api/books?query=' + encodeURIComponent(requestData.query);
+      const getApiUrl = 'http://127.0.0.1:8000/api/books?query=' + encodeURIComponent(requestData.searchValue);
+      const getResponse = await axios.get(getApiUrl);
+      const searchResults = getResponse.data.results || [];
+      setSearchResults(searchResults);
+      console.log("list-------", searchResults);
 
-      // 백엔드로 POST 요청 보내기
-      const response = await axios.post(apiUrl, requestData);
-
-      // 백엔드 응답 처리 (필요시)
-      console.log(response.data);
-
-      // 응답에 기반한 추가 작업이 필요하면 수행하세요
     } catch (error) {
-      // 요청 중 발생한 오류 처리
-      console.error('백엔드로 데이터를 전송하는 동안 오류 발생:', error.message);
+      console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }
   };
+
 
   return (
     <>
