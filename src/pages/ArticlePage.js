@@ -1,6 +1,6 @@
 // src\pages\ArticlePage.js
 
-import React from "react";
+import React, {  useEffect, useState } from 'react';
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
@@ -31,6 +31,11 @@ const ReferencesContainer = styled.div`
 `;
 
 const ArticlePage = () => {
+  const [apa, setApa] = useState("Smith, J. A. (2022). Climate Change and Its Impact on Biodiversity. Environmental Science Journal, 28(3), 123-145.");
+  const [chicago, setChicago] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal 28, no. 3 (2022): 123-145.`);
+  const [mla, setMla] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal, vol. 28, no. 3, 2022, pp. 123-145.`);
+  const [van, setVan] = useState("Smith JA. Climate Change and Its Impact on Biodiversity. Environmental Science Journal. 2022;28(3):123-145.");
+
   return (
     <>
     <Sidebar />
@@ -40,10 +45,14 @@ const ArticlePage = () => {
     <SearchArticle/> 
     </SearchContainer>
     <ResultContainer>
-    <ResultArticle/>
+    <ResultArticle
+    setApa={setApa}
+    setChicago={setChicago}
+    setMla={setMla}
+    setVan={setVan}/>
     </ResultContainer>
     <ReferencesContainer> 
-    <References /> 
+    <References apa={apa} mla={mla} chicago={chicago} van={van} /> 
     </ReferencesContainer>
     </ContentContainer>
     </>

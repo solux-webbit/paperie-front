@@ -4,7 +4,7 @@ import "./result.css";
 import axios from "axios";
 import References from "./References.js";
 
-function ResultArticle({ results }) {
+function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
   const controls = useAnimation();
 
   useEffect(() => {
@@ -20,47 +20,47 @@ function ResultArticle({ results }) {
     };
   }, [controls]);
   
-  const handleCellClick = (title) => {
+  const handleCellClick = async (title) => {
     try {
       ///APA
       const getApaUrl = `http://127.0.0.1:8000/apa/news?selected_title=${title}`;
   
-      const getApa = await axios.get(getApaUrl);
+      const getApa = axios.get(getApaUrl);
 
       const apaResult = getApa.data.data.results;
 
       ///references.js 변수 set
-      setApa(apaResult);
+      References.setApa(apaResult);
 
       ///MLA
       const getMlaUrl = `http://127.0.0.1:8000/mla/news?selected_title=${title}`;
   
-      const getMla = await axios.get(getMlaUrl);
+      const getMla = axios.get(getMlaUrl);
 
       const mlaResult = getMla.data.data.results;
 
       ///references.js 변수 set
-      setMla(mlaResult;)
+      References.setMla(mlaResult);
 
       ///CHI
       const getChiUrl = `http://127.0.0.1:8000/chi/news?selected_title=${title}`;
   
-      const getChi = await axios.get(getChiUrl);
+      const getChi = axios.get(getChiUrl);
 
       const chiResult = getChi.data.data.results;
 
       ///references.js 변수 set
-      setChicago(chiResult);
+      References.setChicago(chiResult);
 
       ///VAN
       const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
   
-      const getVan = await axios.get(getVanUrl);
+      const getVan = axios.get(getVanUrl);
 
       const vanResult = getVan.data.data.results;
 
       ///references.js 변수 set
-      setVan(vanResult);
+      References.setVan(vanResult);
 
     } catch (error) {
       console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
