@@ -25,7 +25,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
       ///APA
       const getApaUrl = `http://127.0.0.1:8000/apa/news?selected_title=${title}`;
   
-      const getApa = axios.get(getApaUrl);
+      const getApa = await axios.get(getApaUrl);
 
       const apaResult = getApa.data.data.results;
 
@@ -34,7 +34,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
       ///MLA
       const getMlaUrl = `http://127.0.0.1:8000/mla/news?selected_title=${title}`;
   
-      const getMla = axios.get(getMlaUrl);
+      const getMla = await axios.get(getMlaUrl);
 
       const mlaResult = getMla.data.data.results;
 
@@ -43,7 +43,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
       ///CHI
       const getChiUrl = `http://127.0.0.1:8000/chi/news?selected_title=${title}`;
   
-      const getChi = axios.get(getChiUrl);
+      const getChi = await axios.get(getChiUrl);
 
       const chiResult = getChi.data.data.results;
 
@@ -52,7 +52,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
       ///VAN
       const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
   
-      const getVan = axios.get(getVanUrl);
+      const getVan = await axios.get(getVanUrl);
 
       const vanResult = getVan.data.data.results;
 
