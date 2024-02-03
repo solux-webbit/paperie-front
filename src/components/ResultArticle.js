@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
 import axios from "axios";
-import References from "./References.js";
+
 
 function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
   const controls = useAnimation();
@@ -29,8 +29,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
 
       const apaResult = getApa.data.data.results;
 
-      ///references.js 변수 set
-      References.setApa(apaResult);
+      setApa(apaResult);
 
       ///MLA
       const getMlaUrl = `http://127.0.0.1:8000/mla/news?selected_title=${title}`;
@@ -39,8 +38,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
 
       const mlaResult = getMla.data.data.results;
 
-      ///references.js 변수 set
-      References.setMla(mlaResult);
+      setMla(mlaResult);
 
       ///CHI
       const getChiUrl = `http://127.0.0.1:8000/chi/news?selected_title=${title}`;
@@ -49,8 +47,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
 
       const chiResult = getChi.data.data.results;
 
-      ///references.js 변수 set
-      References.setChicago(chiResult);
+      setChicago(chiResult);
 
       ///VAN
       const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
@@ -59,8 +56,7 @@ function ResultArticle({ results, setApa, setMla, setChicago, setVan }) {
 
       const vanResult = getVan.data.data.results;
 
-      ///references.js 변수 set
-      References.setVan(vanResult);
+      setVan(vanResult);
 
     } catch (error) {
       console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
