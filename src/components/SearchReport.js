@@ -5,7 +5,7 @@ import axios from "axios";
 import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
-import Results from "./Result";
+import ResultReport from "./ResultReport";
 
 const SearchReport = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -72,7 +72,7 @@ const SearchReport = () => {
         </div>
       </div>
 
-      <Results searchResults={searchResults} />
+      <ResultReport searchResults={searchResults} />
     </>
   );
 };

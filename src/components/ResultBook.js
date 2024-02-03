@@ -42,7 +42,7 @@ function ResultBook({ results }) {
         <caption className="result_table_name"> 검색결과 </caption>
         <thead>
           <tr>
-            <th className="search_name" scope="col" width="800px">논문제목</th>
+            <th className="search_name" scope="col" width="800px">책 제목</th>
           </tr>
         </thead>
         <tbody>
