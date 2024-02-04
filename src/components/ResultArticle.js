@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import "./result.css";
 import axios from "axios";
@@ -7,6 +7,8 @@ import References from './References';
 
 function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
   const controls = useAnimation();
+  // const [showNoResultsMessage, setShowNoResultsMessage] = useState(true);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +23,12 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
     };
   }, [controls]);
   
+  // useEffect(() => {
+  //   // Check if there are search results
+  //   setShowNoResultsMessage(!searchResults || searchResults.length === 0);
+  // }, [searchResults]);
+
+
   const handleCellClick = async (title) => {
     try {
       ///APA
@@ -75,21 +83,21 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
         <caption className="result_table_name"> 검색결과 </caption>
         <thead>
           <tr>
-            <th className="search_name" scope="col" width="800px">기사제목</th>
+            <th className="search_name" scope="col" width="800px">기사 제목</th>
           </tr>
         </thead>
         <tbody>
-          {searchResults && searchResults.length > 0 && (
-            searchResults.map((result, index) => (
-              <tr key={index} className="result_name">
-                <td onClick={() => handleCellClick(result.title)}>
-                  <References title={result.title} />
-                  {result.title}
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
+            {searchResults && searchResults.length > 0 ? (
+              searchResults.map((result, index) => (
+                <tr key={index} className="result_name">
+                  <td onClick={() => handleCellClick(result.title)}>
+                    <References title={result.title} />
+                    {result.title}
+                  </td>
+                </tr>
+              ))
+            ) : null}
+          </tbody>
       </table>
     </motion.div>
   );
