@@ -36,39 +36,35 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
   
       const getApa = await axios.get(getApaUrl);
 
-      const apaResult = getApa.data.data.results;
-
-      setApa(apaResult);
+      setApa(getApa.data.data.results);
+      console.log(getApa);
 
       ///MLA
       const getMlaUrl = `http://127.0.0.1:8000/mla/news?selected_title=${title}`;
   
       const getMla = await axios.get(getMlaUrl);
 
-      const mlaResult = getMla.data.data.results;
-
-      setMla(mlaResult);
+      setMla(getMla.data.data.results);
+      console.log(getMla);
 
       ///CHI
       const getChiUrl = `http://127.0.0.1:8000/chi/news?selected_title=${title}`;
   
       const getChi = await axios.get(getChiUrl);
 
-      const chiResult = getChi.data.data.results;
-
-      setChicago(chiResult);
+      setChicago(getChi.data.data.results);
+      console.log(getChi);
 
       ///VAN
       const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
   
       const getVan = await axios.get(getVanUrl);
 
-      const vanResult = getVan.data.data.results;
-
-      setVan(vanResult);
+      setVan(getVan.data.data.results);
+      console.log(getVan);
 
     } catch (error) {
-      console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
+      console.error(error);
     }
   };
 
@@ -91,7 +87,7 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
               searchResults.map((result, index) => (
                 <tr key={index} className="result_name">
                   <td onClick={() => handleCellClick(result.title)}>
-                    <References title={result.title} />
+                    {/* <References title={result.title} /> */}
                     {result.title}
                   </td>
                 </tr>
