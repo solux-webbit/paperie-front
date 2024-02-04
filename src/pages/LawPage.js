@@ -14,6 +14,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   background: linear-gradient(to bottom, #FAFBFF, #D8E3FA);
   padding: 20px;
+  min-height: 300vh; /* 세로 높이를 300vh로 설정 */
 `;
 
 const SearchContainer = styled.div`

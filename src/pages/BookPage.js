@@ -1,5 +1,4 @@
 // src/pages/BookPage.js
-
 import React from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
@@ -14,6 +13,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   background: linear-gradient(to bottom, #FAFBFF, #D8E3FA);
   padding: 20px;
+  min-height: 300vh; /* 세로 높이를 300vh로 설정 */
 `;
 
 const SearchContainer = styled.div`
@@ -29,24 +29,24 @@ const ReferencesContainer = styled.div`
   margin-left: 70px; /* 사이드바와의 거리 */
 `;
 
-const ArticlePage = () => {
+const BookPage = () => {
   return (
     <>
-    <Sidebar />
-    <ContentContainer>
-    <TopBar />
-    <SearchContainer> 
-    <SearchBook/> 
-    </SearchContainer>
-    <ResultContainer>
-    <ResultBook/>
-    </ResultContainer>
-    <ReferencesContainer> 
-    <References /> 
-    </ReferencesContainer>
-    </ContentContainer>
+      <Sidebar />
+      <ContentContainer>
+        <TopBar />
+        <SearchContainer> 
+          <SearchBook/> 
+        </SearchContainer>
+        <ResultContainer>
+          <ResultBook/>
+        </ResultContainer>
+        <ReferencesContainer> 
+          <References /> 
+        </ReferencesContainer>
+      </ContentContainer>
     </>
   );
 };
 
-export default ArticlePage;
+export default BookPage;
