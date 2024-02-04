@@ -14,8 +14,6 @@ const HelloContainer = styled.div`
 `;
 
 const JoinHello = () => {
-  
-
   return (
     <>
         <HelloContainer>
