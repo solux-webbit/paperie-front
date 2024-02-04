@@ -5,7 +5,6 @@ import "./mypage.css";
 import arrow from "../assets/arrow.png"
 import {Navbar, Nav, Form, Button, Container} from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import Mysidebar from "../components/Mysidebar.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ArticleMypage from "../components/ArticleMypage.js";

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, BrowserRouter as Router, Link } from "react-router-dom";
 import styled from "styled-components";
 import "./join.css";
 import google from "../assets/google_login.png";
 import axios from "axios";
+import {GoogleLogin} from "@react-oauth/google";
+import {GoogleOAuthProvider} from "@react-oauth/google";
 
 
 const InputContainer = styled.div`
@@ -52,7 +54,21 @@ const JoinSignUp = () => {
 
 
   const googleLogin = () =>{
-     /*구글로그인 함수*/
+    const clientId = 'clientID'
+    return (
+        <>
+            <GoogleOAuthProvider clientId={clientId}>
+                <GoogleLogin
+                    onSuccess={(res) => {
+                        console.log(res);
+                    }}
+                    onFailure={(err) => {
+                        console.log(err);
+                    }}
+                />
+            </GoogleOAuthProvider>
+        </>
+    );
   }
 
 return (
@@ -86,9 +102,11 @@ return (
     </SignUpContainer>
     <SocialContainer>
         <h6 className="SocialText">소셜 계정으로 간편하게 로그인하기</h6>
+        <a href="http://localhost:8000/google/login">
         <div className="Google"  onClick={googleLogin}>
             <img src={google}/>
         </div>
+        </a>
     </SocialContainer>
     </>
   );
