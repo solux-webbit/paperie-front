@@ -26,9 +26,6 @@ const ResultContainer = styled.div`
   margin-left: 70px;
 `;
 
-const ReferencesContainer = styled.div`
-  margin-left: 70px;
-`;
 
 const ArticlePage = () => {
 
@@ -43,8 +40,6 @@ const ArticlePage = () => {
         <ResultContainer>
           <ResultArticle/>
         </ResultContainer>
-        <ReferencesContainer> 
-        </ReferencesContainer>
       </ContentContainer>
     </>
   );
