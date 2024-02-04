@@ -64,8 +64,8 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
       const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
   
       const getVan = await axios.get(getVanUrl);
-      setVanResults(getVan.data[0]);
-      console.log(getVan.data[0]);
+      setVanResults(getVan.data);
+      console.log(getVan.data);
       ///setVan(getVan.data.data.results);
 
     } catch (error) {
