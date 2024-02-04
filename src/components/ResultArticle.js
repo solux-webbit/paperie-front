@@ -75,26 +75,25 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
       transition={{ ease: "easeInOut", duration: 0.2 }}
       className="result_border"
     >
-      <table className="caption-top table-borderless table-hover">
-        <caption className="result_table_name"> 검색결과 </caption>
-        <thead>
-          <tr>
-            <th className="search_name" scope="col" width="800px">기사 제목</th>
-          </tr>
-        </thead>
-        <tbody>
-            {searchResults && searchResults.length > 0 ? (
-              searchResults.map((result, index) => (
-                <tr key={index} className="result_name">
-                  <td onClick={() => handleCellClick(result.title)}>
-                    {/* <References title={result.title} /> */}
-                    {result.title}
-                  </td>
-                </tr>
-              ))
-            ) : null}
+      {searchResults && searchResults.length > 0 && (
+        <table className="caption-top table-borderless table-hover">
+          <caption className="result_table_name"> 검색결과 </caption>
+          <thead>
+            <tr>
+              <th className="search_name" scope="col" width="800px">기사 제목</th>
+            </tr>
+          </thead>
+          <tbody>
+            {searchResults.map((result, index) => (
+              <tr key={index} className="result_name">
+                <td onClick={() => handleCellClick(result.title)}>
+                  {result.title}
+                </td>
+              </tr>
+            ))}
           </tbody>
-      </table>
+        </table>
+      )}
     </motion.div>
   );
 }
