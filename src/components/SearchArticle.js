@@ -71,7 +71,7 @@ const SearchArticle = () => {
           />
         </div>
       </div>
-      <ResultArticle results={searchResults} />
+      <ResultArticle searchResults={searchResults} />
     </>
   );
 };
