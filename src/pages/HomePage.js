@@ -43,7 +43,6 @@ const HomePage = () => {
           <ResultReport />
         </ResultContainer>
         <ReferencesContainer> 
-          <References /> 
         </ReferencesContainer>
       </ContentContainer>
     </>
