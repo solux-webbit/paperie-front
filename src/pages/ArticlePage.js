@@ -31,10 +31,6 @@ const ReferencesContainer = styled.div`
 `;
 
 const ArticlePage = () => {
-  const [apa, setApa] = useState("Smith, J. A. (2022). Climate Change and Its Impact on Biodiversity. Environmental Science Journal, 28(3), 123-145.");
-  const [chicago, setChicago] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal 28, no. 3 (2022): 123-145.`);
-  const [mla, setMla] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal, vol. 28, no. 3, 2022, pp. 123-145.`);
-  const [van, setVan] = useState("Smith JA. Climate Change and Its Impact on Biodiversity. Environmental Science Journal. 2022;28(3):123-145.");
 
   return (
     <>
@@ -45,15 +41,9 @@ const ArticlePage = () => {
           <SearchArticle /> 
         </SearchContainer>
         <ResultContainer>
-          <ResultArticle
-            setApa={setApa}
-            setChicago={setChicago}
-            setMla={setMla}
-            setVan={setVan}
-          />
+          <ResultArticle/>
         </ResultContainer>
         <ReferencesContainer> 
-          <References apa={apa} mla={mla} chicago={chicago} van={van} /> 
         </ReferencesContainer>
       </ContentContainer>
     </>
