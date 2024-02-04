@@ -39,7 +39,7 @@ const SearchReport = () => {
 
       const getApiUrl = `http://127.0.0.1:8000/api/scholars?query=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);
-      const searchResults = getResponse.data.results || [];
+      const searchResults = getResponse.data || [];
       setSearchResults(searchResults);
       console.log("list-------", searchResults);
     } catch (error) {

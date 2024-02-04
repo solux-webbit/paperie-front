@@ -42,7 +42,6 @@ const BookPage = () => {
           <ResultBook/>
         </ResultContainer>
         <ReferencesContainer> 
-          <References /> 
         </ReferencesContainer>
       </ContentContainer>
     </>

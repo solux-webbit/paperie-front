@@ -28,34 +28,34 @@ function ResultReport({ searchResults, setApa, setMla, setChicago, setVan }) {
     };
   }, [controls]);
   
-  const handleCellClick = async (title) => {
+  const handleCellClick = async (data) => {
     try {
       ///APA
-      const getApaUrl = `http://127.0.0.1:8000/apa/news?selected_title=${title}`;
+      const getApaUrl = `http://127.0.0.1:8000/apa/scholars?selected_title=${data}`;
   
       const getApa = await axios.get(getApaUrl);
-      setApaResults(getApa.data[0]);
-      console.log(getApa.data[0]);
+      setApaResults(getApa.data);
+      console.log(getApa.data);
       ///setApa(getApa.data);
 
       ///MLA
-      const getMlaUrl = `http://127.0.0.1:8000/mla/news?selected_title=${title}`;
+      const getMlaUrl = `http://127.0.0.1:8000/mla/scholars?selected_title=${data}`;
   
       const getMla = await axios.get(getMlaUrl);
-      setMlaResults(getMla.data[0]);
-      console.log(getMla.data[0]);
+      setMlaResults(getMla.data);
+      console.log(getMla.data);
       ///setMla(getMla.data.data.results);
 
       ///CHI
-      const getChiUrl = `http://127.0.0.1:8000/chi/news?selected_title=${title}`;
+      const getChiUrl = `http://127.0.0.1:8000/chi/scholars?selected_title=${data}`;
   
       const getChi = await axios.get(getChiUrl);
-      setChiResults(getChi.data[0]);
-      console.log(getChi.data[0]);
+      setChiResults(getChi.data);
+      console.log(getChi.data);
       ///setChicago(getChi.data.data.results);
 
       ///VAN
-      const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
+      const getVanUrl = `http://127.0.0.1:8000/van/scholars?selected_title=${data}`;
   
       const getVan = await axios.get(getVanUrl);
       setVanResults(getVan.data);
@@ -83,10 +83,10 @@ function ResultReport({ searchResults, setApa, setMla, setChicago, setVan }) {
             </tr>
           </thead>
           <tbody>
-            {searchResults.map((result, index) => (
+            {searchResults.map((data, index) => (
               <tr key={index} className="result_name">
-                <td onClick={() => handleCellClick(result.title)}>
-                  {result.title}
+                <td onClick={() => handleCellClick(data.title)}>
+                  {data.title}
                 </td>
               </tr>
             ))}
