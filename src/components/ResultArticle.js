@@ -12,8 +12,6 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
   const [mlaResults, setMlaResults] = useState([]);
   const [chiResults, setChiResults] = useState([]);
   const [vnaResults, setVanResults] = useState([]);
-  // const [showNoResultsMessage, setShowNoResultsMessage] = useState(true);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +26,6 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
     };
   }, [controls]);
   
-  // useEffect(() => {
-  //   // Check if there are search results
-  //   setShowNoResultsMessage(!searchResults || searchResults.length === 0);
-  // }, [searchResults]);
-
-
   const handleCellClick = async (title) => {
     try {
       ///APA
