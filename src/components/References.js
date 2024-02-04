@@ -10,6 +10,7 @@ import axios from "axios";
 function References({ result_title, apa, mla, chicago, van }) {
 
   const controls = useAnimation();
+
   /* const [apa, setApa] = useState("Smith, J. A. (2022). Climate Change and Its Impact on Biodiversity. Environmental Science Journal, 28(3), 123-145.");
   const [chicago, setChicago] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal 28, no. 3 (2022): 123-145.`);
   const [mla, setMla] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal, vol. 28, no. 3, 2022, pp. 123-145.`);
@@ -18,6 +19,7 @@ function References({ result_title, apa, mla, chicago, van }) {
   const [type, setType]= useState();
   const [ref, setRef]=useState();
   const [title, setTitle]= useState();
+
 
   
   useEffect(() => {
@@ -46,12 +48,31 @@ function References({ result_title, apa, mla, chicago, van }) {
     }
   };
 
+  const handleToMypage = async (reference, result) =>{
+    try{
+      const response = await axios.post("http://127.0.0.1:8000/mypage/get?title={title}&ref={ref}", {
+        title: result_title,
+        ref : reference,
+        type : "article",
+        content: {result},
+
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error("Mypage로 옮기기 실패", error);
+      }
+  }
+
   const renderTableRow = (type, result) => (
     <tr key={type}>
       <td className='refer_type' scope="row" width="200px">{type}</td>
       <td className={`${type.toLowerCase()}_result`} width="500px">{result}</td>
       <td>
-        <button type="button" className="copy_button" onClick={() => handleCopyClipBoard(result)}>
+        <button type="button" className="copy_button" 
+        onClick={() => {
+          handleCopyClipBoard(result);
+          handleToMypage(type, result);
+        }}>
           <div>
             <img className="copy_img" src={copy_img} alt={`${type} Copy`} />
             Copy
@@ -60,21 +81,6 @@ function References({ result_title, apa, mla, chicago, van }) {
       </td>
     </tr>
   );
-
-  const handleToMypage = async (reference) =>{
-    try{
-      const response = await axios.post("http://127.0.0.1:8000/mypage/get?title={title}&ref={ref}", {
-        title: result_title,
-        ref : reference,
-        type : "article",
-        content: {reference},
-
-        });
-        console.log(response.data);
-      } catch (error) {
-        console.error("Mypage로 옮기기 실패", error);
-      }
-  }
 
   return (
     <motion.div
