@@ -89,7 +89,7 @@ function ResultBook({ searchResults, setApa, setMla, setChicago, setVan }) {
                 </td>
               </tr>
             ))}
-            <References apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults}/>
+            <References ftype="책" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults}/>
           </tbody>
         </table>
       )}

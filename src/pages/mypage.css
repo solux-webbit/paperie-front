@@ -33,11 +33,23 @@ body {
 .navbar {
     margin-top: 30px;
     width: 900px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.navbar-nav .nav-link {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-right: 100px;
+    margin-left: 70px;
+  }
 
 .my_menu {
     margin-left: 30px;
     margin-right: 20px;
+    font-size: 20px;
 }
 
 .me-2 {
@@ -108,10 +120,9 @@ table{
   .second-column {
     width: 200px;
     height: 70px;
-    
   }
 
-  .table_td,.table_tr {
+.table_td,.table_tr {
     text-align: center;
     padding: 5px;
 }
@@ -143,59 +154,9 @@ table{
   }
 
 
-.bookLinkButton{
-    width: 90px;
-    height: 40px;
-    border-radius: 20px;
-    border: none;
-    background: #F28F6B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: 'GmarketSansMedium', sans-serif;
-}
-.bookLinkButton:hover {
-    background:  #E3754D; /* 마우스 호버 시 그라데이션 배경색 변경 */
-  }
-
-.articleLinkButton{
-    width: 90px;
-    height: 40px;
-    background: #7EDB87;
-    border-radius: 20px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: 'GmarketSansMedium', sans-serif;
-}
-
-.articleLinkButton:hover {
-    background:  #58CD64; /* 마우스 호버 시 그라데이션 배경색 변경 */
-  }
-
-.reportLinkButton{
-    width: 90px;
-    height: 40px;
-    background:#afaaaa;
-    border-radius: 20px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: 'GmarketSansMedium', sans-serif;
-}
-.reportLinkButton:hover{
-    background: #afaaaa;
-}
-
-
 .contentBox{
-    width: 550px;
-    height: 60px;
+    width: 600px;
+    height: 100px;
     border-radius: 20px;
     border: none;
     background: #f2f2f2;
@@ -204,18 +165,19 @@ table{
     justify-content: center;
     color: black;
     font-family: 'GmarketSansMedium', sans-serif;
+    font-size: 13px;
     margin-left: 10px;
 }
 
 .copy{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border: none;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -20px;
+    margin-left: -10px;
 }
 .copy:hover{
     background: white;
