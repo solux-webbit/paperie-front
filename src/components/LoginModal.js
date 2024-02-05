@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
 
-const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
+const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,20 @@ const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
         password, 
       });
       // 로그인이 성공한 경우에 대한 처리
+<<<<<<< Updated upstream
       console.log(response.data);
+=======
+      const user = res.data;
+      const jwtToken = user.token;
+      const { result, errorCause } = res.data;
+
+      // 토큰 저장
+      sessionStorage.setItem("userToken", jwtToken);
+      console.log(res.data);
+      onLoginSuccess(username);
+      closeModal();
+
+>>>>>>> Stashed changes
     } catch (error) {
       // 로그인이 실패한 경우에 대한 처리
       console.error("로그인 실패:", error);
