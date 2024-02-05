@@ -7,8 +7,8 @@ import { motion, useAnimation } from 'framer-motion';
 import axios from "axios";
 
 
-function References({ result_title, apa, mla, chicago, van }) {
-
+function References({title, ftype, apa, mla, chicago, van }) {
+  console.log(ftype);
   const controls = useAnimation();
 
   /* const [apa, setApa] = useState("Smith, J. A. (2022). Climate Change and Its Impact on Biodiversity. Environmental Science Journal, 28(3), 123-145.");
@@ -16,9 +16,9 @@ function References({ result_title, apa, mla, chicago, van }) {
   const [mla, setMla] = useState(`Smith, John A. "Climate Change and Its Impact on Biodiversity." Environmental Science Journal, vol. 28, no. 3, 2022, pp. 123-145.`);
   const [van, setVan] = useState("Smith JA. Climate Change and Its Impact on Biodiversity. Environmental Science Journal. 2022;28(3):123-145.");
  */
-  const [type, setType]= useState();
-  const [ref, setRef]=useState();
-  const [title, setTitle]= useState();
+  // const [type, setType]= useState();
+  // const [ref, setRef]=useState();
+  // const [title, setTitle]= useState();
 
 
   
@@ -50,11 +50,15 @@ function References({ result_title, apa, mla, chicago, van }) {
 
   const handleToMypage = async (reference, result) =>{
     try{
-      const response = await axios.post("http://127.0.0.1:8000/mypage/get?title={title}&ref={ref}", {
-        title: result_title,
+      console.log("Mypage!!:", title);
+      console.log("Mypage!!:", reference);
+      console.log("Mypage!!:", ftype);
+      console.log("Mypage!!:", result);
+      const response = await axios.post("http://127.0.0.1:8000/mypage/save", {
+        title: title,
         ref : reference,
-        type : "article",
-        content: {result},
+        type : ftype,
+        content: result,
 
         });
         console.log(response.data);

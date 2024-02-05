@@ -88,7 +88,7 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
                 </td>
               </tr>
             ))}
-            <References apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults}/>
+        <References title={searchResults[0].title} ftype="뉴스" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults} />
           </tbody>
         </table>
       )}
