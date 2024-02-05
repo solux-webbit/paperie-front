@@ -62,7 +62,7 @@ class TopBar extends React.Component {
   //로그인
   handleLogin = async () => {
     try {
-      const res = await axios.post("http://127.0.0.1:8000/accounts/login", {
+      const res = await axios.get("http://127.0.0.1:8000/accounts/login/", {
         username: this.state.id,
         password: this.state.password,
       });
