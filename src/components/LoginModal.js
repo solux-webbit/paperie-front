@@ -18,9 +18,6 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess })
         password, 
       });
       // 로그인이 성공한 경우에 대한 처리
-<<<<<<< Updated upstream
-      console.log(response.data);
-=======
       const user = res.data;
       const jwtToken = user.token;
       const { result, errorCause } = res.data;
@@ -31,7 +28,7 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess })
       onLoginSuccess(username);
       closeModal();
 
->>>>>>> Stashed changes
+
     } catch (error) {
       // 로그인이 실패한 경우에 대한 처리
       console.error("로그인 실패:", error);
