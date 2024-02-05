@@ -75,6 +75,7 @@ class TopBar extends React.Component {
           changeID={() => this._changeID()}
           changePW={() => this._changePW()}
           handleLogin={() => this.handleLogin()} //로그인 핸들러 전달
+          isLoggedIn={this.state.isLoggedIn} //로그인 여부 전달
         />
         <Link to="/mypage">
           <Button variant="light">mypage</Button>

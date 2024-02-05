@@ -6,20 +6,18 @@ import { Link } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
 
-const LoginModal = ({ visible, closeModal, changeID, changePW, handleLogin }) => {
+const LoginModal = ({ visible, closeModal, changeID, changePW, handleLogin, isLoggedIn }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [checkEmail, setCheckEmail] = useState("");
-  const [checkPwd, setCheckPwd] = useState("");
+  const [checkEmail, setCheckEmail] = useState(false);
+  const [checkPwd, setCheckPwd] = useState(false);
 
   const handleLoginClick = async () => {
-    /* handleLogin(); //TopBar.js 에서 받은 handleLogin 함수 호출 */
-      //로그인
       try {
         const res = await axios.post("http://127.0.0.1:8000/accounts/login/", {
-          username: this.state.id,
-          password: this.state.password,
+          username: username,
+          password: password,
         });
   
         const user = res.data;
