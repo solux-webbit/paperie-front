@@ -105,9 +105,11 @@ class TopBar extends React.Component {
           changePW={() => this._changePW()}
           onLoginSuccess={this.handleLoginSuccess}
         />
-        <Link to="/mypage">
-          <Button variant="light">mypage</Button>
-        </Link>
+        { this.state.isLoggedIn ? (
+          <Link to="/mypage">
+            <Button variant="light">mypage</Button>
+          </Link>
+        ) : (<Button variant="light" disabled>Mypage</Button>) }
       </TopBarWrapper>
     );
   }
