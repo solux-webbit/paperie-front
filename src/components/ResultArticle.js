@@ -60,6 +60,9 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
       console.log(getVan.data);
       ///setVan(getVan.data.data.results);
 
+      const scrollAmount = window.innerWidth < 600 ? 200 : 500; // 스크롤을 얼마나 이동시킬지 조정
+      window.scrollBy({ top: scrollAmount, behavior: "smooth" });
+
     } catch (error) {
       console.error(error);
     }
@@ -88,7 +91,7 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
                 </td>
               </tr>
             ))}
-        <References title={searchResults[0].title} ftype="뉴스" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults} />
+        <References ftype="뉴스" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults} />
           </tbody>
         </table>
       )}

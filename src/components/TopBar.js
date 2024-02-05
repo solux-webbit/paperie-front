@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal"; 
 import "./SignIn.css";
+import axios from "axios";
 
 const TopBarWrapper = styled.div`
   display: flex;
@@ -16,13 +17,17 @@ const TopBarWrapper = styled.div`
 `;
 
 class TopBar extends React.Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
       isModalVisible: false,
+      isLoggedIn: false, //로그인 여부 상태 추가
       id: "",
       password: "",
+      checkEmail: false,
+      checkPwd: false,
     };
   }
 
@@ -54,16 +59,79 @@ class TopBar extends React.Component {
     });
   }
 
+  //로그인
+  handleLogin = async () => {
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/accounts/login", {
+        username: this.state.id,
+        password: this.state.password,
+      });
+
+      const user = res.data;
+      const jwtToken = user.token;
+      const { result, errorCause } = res.data;
+
+      // 토큰 저장
+      localStorage.setItem("userToken", jwtToken);
+        
+      // 틀린 이메일, 비밀번호 걸러주기
+      if (!result) {
+        if (errorCause === "email") {
+          this.setState({
+              checkEmail: false,
+          });
+        } else if (errorCause === "password") {
+          this.setState({
+            checkPwd: false,
+          });
+          }
+        } else {
+          this.setState({
+            checkEmail: true,
+            checkPwd: true,
+          });
+        }
+
+      // 로그인 성공 시 상태를 업데이트하고 모달을 닫음
+      this.setState({
+        isLoggedIn: true,
+        isModalVisible: false,
+      });
+
+      console.log(res.data);
+    } catch (error) {
+      // 로그인 실패한 경우에 대한 처리
+      console.error("로그인 실패:", error);
+    }
+  };
+
+  handleLogout = () => {
+    // 로그아웃 처리 로직 추가
+
+    // 로그아웃 후 상태를 업데이트하여 다시 로그인 버튼으로 변경
+    this.setState({
+      isLoggedIn: false,
+    });
+  };
+
   render() {
     console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
     return (
       <TopBarWrapper>
-        <Button variant="light" onClick={() => this.openModal()}>login</Button>&nbsp;
+        {this.state.isLoggedIn ? (
+          // 로그인 상태일 때 로그아웃 버튼을 표시
+          <Button variant="light" onClick={() => this.handleLogout()}>logout</Button>
+        ) : (
+          // 로그아웃 상태일 때 로그인 버튼을 표시
+          <Button variant="light" onClick={() => this.openModal()}>login</Button>
+        )}
+        &nbsp;
         <LoginModal
           visible={this.state.isModalVisible}
           closeModal={() => this.closeModal()}
           changeID={() => this._changeID()}
           changePW={() => this._changePW()}
+          handleLogin={() => this.handleLogin()} //로그인 핸들러 전달
         />
         <Link to="/mypage">
           <Button variant="light">mypage</Button>

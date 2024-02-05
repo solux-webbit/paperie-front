@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
 
-const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
+const LoginModal = ({ visible, closeModal, changeID, changePW, handleLogin }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin= async () => {
-    try{
+  const handleLoginClick = async () => {
+    handleLogin(); //TopBar.js 에서 받은 handleLogin 함수 호출
+    closeModal(); //로그인 후 모달 닫기
+    /* try{
     const response = await axios.post("http://127.0.0.1:8000/accounts/api/token/", {
         username, 
         password, 
@@ -22,8 +24,8 @@ const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
     } catch (error) {
       // 로그인이 실패한 경우에 대한 처리
       console.error("로그인 실패:", error);
-    }
-  };
+    } */
+  }; 
 
   return (
     <Modal
@@ -77,7 +79,7 @@ const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
             </div>
 
             <div className="submit_div">
-              <div><input type="button" value="로그인" onClick={handleLogin}/></div>
+              <div><input type="button" value="로그인" onClick={handleLoginClick}/></div>
             </div>
           </div>
         </form>
