@@ -5,8 +5,9 @@ import axios from "axios";
 import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
+import ResultBook from "./ResultBook";
 
-const Search_book = () => {
+const Searchbook = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchResults, setSearchResults] = useState([]); // 검색 결과를 저장할 상태
 
@@ -39,7 +40,7 @@ const Search_book = () => {
 
       const getApiUrl = 'http://127.0.0.1:8000/api/books?query=' + encodeURIComponent(requestData.searchValue);
       const getResponse = await axios.get(getApiUrl);
-      const searchResults = getResponse.data.results || [];
+      const searchResults = getResponse.data || [];
       setSearchResults(searchResults);
       console.log("list-------", searchResults);
 
@@ -71,9 +72,11 @@ const Search_book = () => {
           />
         </div>
       </div>
+      
+      <ResultBook searchResults={searchResults} />
     </>
   );
 };
 
-export default Search_book;
+export default Searchbook;
 

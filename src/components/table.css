@@ -6,7 +6,7 @@ body {
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
-    user-select:none
+    user-select:none;
 
 }
 
@@ -17,10 +17,10 @@ body {
     border-radius: 15px;
     box-shadow: 5px 5px 5px -3px #B5B7C0;
     position: absolute;
-    top: 200%;
-    background-color: white; 
-
+    top: 130%;
+    background-color: white;
 }
+
 
 td {
     font-family: 'Poppins', sans-serif;

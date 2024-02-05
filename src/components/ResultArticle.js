@@ -12,8 +12,6 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
   const [mlaResults, setMlaResults] = useState([]);
   const [chiResults, setChiResults] = useState([]);
   const [vnaResults, setVanResults] = useState([]);
-  // const [showNoResultsMessage, setShowNoResultsMessage] = useState(true);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,17 +26,6 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
     };
   }, [controls]);
   
-  // useEffect(() => {
-  //   // Check if there are search results
-  //   setShowNoResultsMessage(!searchResults || searchResults.length === 0);
-  // }, [searchResults]);
-  
-  const handleReferencesUpdate = (title) => {
-    // 여기에서 References 컴포넌트가 사용할 값들을 업데이트
-    // 예: setApaResults, setMlaResults, setChiResults, setVanResults 등을 사용하여 값 업데이트
-    // ...
-  };
-
   const handleCellClick = async (title) => {
     try {
       ///APA
@@ -69,8 +56,8 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
       const getVanUrl = `http://127.0.0.1:8000/van/news?selected_title=${title}`;
   
       const getVan = await axios.get(getVanUrl);
-      setVanResults(getVan.data[0]);
-      console.log(getVan.data[0]);
+      setVanResults(getVan.data);
+      console.log(getVan.data);
       ///setVan(getVan.data.data.results);
 
     } catch (error) {

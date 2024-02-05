@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
 import ResultReport from "./ResultReport";
@@ -40,8 +39,7 @@ const SearchReport = () => {
 
       const getApiUrl = `http://127.0.0.1:8000/api/scholars?query=${encodeURIComponent(requestData.searchValue)}`;
       const getResponse = await axios.get(getApiUrl);
-
-      const searchResults = getResponse.data.results || [];
+      const searchResults = getResponse.data || [];
       setSearchResults(searchResults);
       console.log("list-------", searchResults);
     } catch (error) {

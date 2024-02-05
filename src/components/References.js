@@ -70,7 +70,7 @@ function References({title, ftype, apa, mla, chicago, van }) {
   const renderTableRow = (type, result) => (
     <tr key={type}>
       <td className='refer_type' scope="row" width="200px">{type}</td>
-      <td className={`${type.toLowerCase()}_result`} width="500px">{result}</td>
+      <td className={`${type.toLowerCase()}_result`} width="500px" height="100px">{result}</td>
       <td>
         <button type="button" className="copy_button" 
         onClick={() => {
@@ -104,8 +104,8 @@ function References({title, ftype, apa, mla, chicago, van }) {
         </thead>
         <tbody>
             {renderTableRow('APA', apa)}
-            {renderTableRow('Chicago', chicago)}
             {renderTableRow('MLA', mla)}
+            {renderTableRow('Chicago', chicago)}
             {renderTableRow('Vancouver', van)}
 
         </tbody>

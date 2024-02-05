@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import { createRoot } from 'react-dom/client';
 import handImg from "../assets/handImg.png";
 import searchImg from "../assets/search.png";
 import ResultArticle from "./ResultArticle";
@@ -32,23 +31,29 @@ const SearchArticle = () => {
   };
 
   // 검색 버튼 클릭 시 실행되는 함수
-  const handleSearch = async () => {
-    try {
-      const requestData = {
-        searchValue: searchValue,
-      };
+// 검색 버튼 클릭 시 실행되는 함수
+const handleSearch = async () => {
+  try {
+    const requestData = {
+      searchValue: searchValue,
+    };
 
-      const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
-      const getResponse = await axios.get(getApiUrl);
-      const searchResults = getResponse.data.results || [];
-      setSearchResults(searchResults);
-      console.log("list-------", searchResults);
+    const getApiUrl = `http://127.0.0.1:8000/api/news?q=${encodeURIComponent(requestData.searchValue)}`;
+    const getResponse = await axios.get(getApiUrl);
+    const searchResults = getResponse.data.results || [];
+    setSearchResults(searchResults);
+    console.log("list-------", searchResults);
 
-    } catch (error) {
-      console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
+    // 검색 결과가 있을 때 아래로 스크롤 조정
+    if (searchResults.length > 0) {
+      const scrollAmount = window.innerWidth < 600 ? 200 : 500; // 스크롤을 얼마나 이동시킬지 조정
+      window.scrollBy({ top: scrollAmount, behavior: "smooth" });
     }
-  };
 
+  } catch (error) {
+    console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
+  }
+};
   return (
     <>
       <h1>

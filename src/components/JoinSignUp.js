@@ -4,9 +4,8 @@ import styled from "styled-components";
 import "./join.css";
 import google from "../assets/google_login.png";
 import axios from "axios";
-import {GoogleLogin} from "@react-oauth/google";
 import {GoogleOAuthProvider} from "@react-oauth/google";
-
+import { GoogleLogin } from '@react-oauth/google';
 
 const InputContainer = styled.div`
   margin-bottom: 40px; /* 회원가입 버튼과의 거리 */
