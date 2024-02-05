@@ -10,9 +10,56 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, handleLogin }) =>
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [checkEmail, setCheckEmail] = useState("");
+  const [checkPwd, setCheckPwd] = useState("");
 
   const handleLoginClick = async () => {
-    handleLogin(); //TopBar.js 에서 받은 handleLogin 함수 호출
+    /* handleLogin(); //TopBar.js 에서 받은 handleLogin 함수 호출 */
+      //로그인
+      try {
+        const res = await axios.post("http://127.0.0.1:8000/accounts/login/", {
+          username: this.state.id,
+          password: this.state.password,
+        });
+  
+        const user = res.data;
+        const jwtToken = user.token;
+        const { result, errorCause } = res.data;
+  
+        // 토큰 저장
+        localStorage.setItem("userToken", jwtToken);
+          
+        // 틀린 이메일, 비밀번호 걸러주기
+        if (!result) {
+          if (errorCause === "email") {
+            setCheckEmail(false);
+          } else if (errorCause === "password") {
+            setCheckPwd(false);
+            }
+          } else {
+            setCheckEmail(true);
+            setCheckPwd(true);
+          }
+  
+        // 로그인 성공 시 상태를 업데이트하고 모달을 닫음
+        this.setState({
+          isLoggedIn: true,
+          isModalVisible: false,
+        });
+  
+        console.log(res.data);
+      } catch (error) {
+        // 로그인 실패한 경우에 대한 처리
+        console.error("로그인 실패:", error);
+      }
+  /* handleLogout = () => {
+    // 로그아웃 처리 로직 추가
+
+    // 로그아웃 후 상태를 업데이트하여 다시 로그인 버튼으로 변경
+    this.setState({
+      isLoggedIn: false,
+    });
+  };
     closeModal(); //로그인 후 모달 닫기
     /* try{
     const response = await axios.post("http://127.0.0.1:8000/accounts/api/token/", {
@@ -24,7 +71,7 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, handleLogin }) =>
     } catch (error) {
       // 로그인이 실패한 경우에 대한 처리
       console.error("로그인 실패:", error);
-    } */
+    } */ 
   }; 
 
   return (

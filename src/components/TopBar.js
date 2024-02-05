@@ -26,8 +26,6 @@ class TopBar extends React.Component {
       isLoggedIn: false, //로그인 여부 상태 추가
       id: "",
       password: "",
-      checkEmail: false,
-      checkPwd: false,
     };
   }
 
@@ -58,61 +56,6 @@ class TopBar extends React.Component {
       isModalVisible: false,
     });
   }
-
-  //로그인
-  handleLogin = async () => {
-    try {
-      const res = await axios.get("http://127.0.0.1:8000/accounts/login/", {
-        username: this.state.id,
-        password: this.state.password,
-      });
-
-      const user = res.data;
-      const jwtToken = user.token;
-      const { result, errorCause } = res.data;
-
-      // 토큰 저장
-      localStorage.setItem("userToken", jwtToken);
-        
-      // 틀린 이메일, 비밀번호 걸러주기
-      if (!result) {
-        if (errorCause === "email") {
-          this.setState({
-              checkEmail: false,
-          });
-        } else if (errorCause === "password") {
-          this.setState({
-            checkPwd: false,
-          });
-          }
-        } else {
-          this.setState({
-            checkEmail: true,
-            checkPwd: true,
-          });
-        }
-
-      // 로그인 성공 시 상태를 업데이트하고 모달을 닫음
-      this.setState({
-        isLoggedIn: true,
-        isModalVisible: false,
-      });
-
-      console.log(res.data);
-    } catch (error) {
-      // 로그인 실패한 경우에 대한 처리
-      console.error("로그인 실패:", error);
-    }
-  };
-
-  handleLogout = () => {
-    // 로그아웃 처리 로직 추가
-
-    // 로그아웃 후 상태를 업데이트하여 다시 로그인 버튼으로 변경
-    this.setState({
-      isLoggedIn: false,
-    });
-  };
 
   render() {
     console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
