@@ -32,7 +32,12 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
   //   // Check if there are search results
   //   setShowNoResultsMessage(!searchResults || searchResults.length === 0);
   // }, [searchResults]);
-
+  
+  const handleReferencesUpdate = (title) => {
+    // 여기에서 References 컴포넌트가 사용할 값들을 업데이트
+    // 예: setApaResults, setMlaResults, setChiResults, setVanResults 등을 사용하여 값 업데이트
+    // ...
+  };
 
   const handleCellClick = async (title) => {
     try {
@@ -96,7 +101,7 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
                 </td>
               </tr>
             ))}
-            <References apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults}/>
+        <References title={searchResults[0].title} ftype="뉴스" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults} />
           </tbody>
         </table>
       )}
