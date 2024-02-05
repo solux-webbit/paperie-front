@@ -42,6 +42,13 @@ const SearchReport = () => {
       const searchResults = getResponse.data || [];
       setSearchResults(searchResults);
       console.log("list-------", searchResults);
+      
+      // 검색 결과가 있을 때 아래로 스크롤 조정
+      if (searchResults.length > 0) {
+        const scrollAmount = window.innerWidth < 600 ? 200 : 500; // 스크롤을 얼마나 이동시킬지 조정
+        window.scrollBy({ top: scrollAmount, behavior: "smooth" });
+      }
+
     } catch (error) {
       console.error('검색 결과를 가져오는 중 오류 발생:', error.message);
     }

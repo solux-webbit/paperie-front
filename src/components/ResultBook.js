@@ -61,6 +61,11 @@ function ResultBook({ searchResults, setApa, setMla, setChicago, setVan }) {
       console.log(getVan.data);
       ///setVan(getVan.data.data.results);
 
+      // 스크롤
+      const scrollAmount = window.innerWidth < 600 ? 200 : 500; // 스크롤을 얼마나 이동시킬지 조정
+      window.scrollBy({ top: scrollAmount, behavior: "smooth" });
+
+
     } catch (error) {
       console.error(error);
     }
