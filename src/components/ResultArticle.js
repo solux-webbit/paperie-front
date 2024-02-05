@@ -85,10 +85,11 @@ function ResultArticle({ searchResults, setApa, setMla, setChicago, setVan }) {
               <tr key={index} className="result_name">
                 <td onClick={() => handleCellClick(result.title)}>
                   {result.title}
+
                 </td>
               </tr>
             ))}
-        <References title={searchResults[0].title} ftype="뉴스" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults} />
+             <References ftype="뉴스" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults} />
           </tbody>
         </table>
       )}

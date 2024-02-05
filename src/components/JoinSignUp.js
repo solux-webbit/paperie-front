@@ -53,7 +53,7 @@ const JoinSignUp = () => {
 
 
   const googleLogin = () =>{
-    const clientId = 'clientID'
+    const clientId = "69559059206-hqnbf55oh5spefj6floi15270mn8bdag.apps.googleusercontent.com"
     return (
         <>
             <GoogleOAuthProvider clientId={clientId}>

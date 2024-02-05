@@ -17,17 +17,21 @@ const TableContainer = styled.div`
   display: flex;
 `;
 
-const handleCopy = (text) => {
-  try {
-    navigator.clipboard.writeText(text);
-    alert('클립보드에 복사되었습니다.');
-  } catch (e) {
-    alert('클립보드 복사에 실패하였습니다');
-  }
-}
 
 
-const BookMypage = () => { 
+const ReportMypage = ({content, fref, date}) => { 
+  const handleClipboardCopy = () => {
+    const textToCopy = content;
+
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert('클립보드에 복사되었습니다.');
+      })
+      .catch((err) => {
+        console.error('텍스트 복사 실패:', err);
+      });
+  };
+  
     return(
         <>
             <div className="historyContainer">
@@ -40,20 +44,16 @@ const BookMypage = () => {
                 <div className="tableBox">
                     <table>
                     <tr className="table_tr">
-                <td colspan="3" className="first-column table_td"></td>
-              <td className="second-column table_td">2024-02-02</td>
+                <td rowSpan="2" className="first-column table_td"><div className="contentBox" id="Content">{content}</div></td>
+              <td colSpan="2" className="second-column table_td">{date}</td>
             </tr>
             <tr className="table_tr">
-              <td width="70px">Ref.</td>
-              <td id="Result" className="first-column table_td">
-                <div className="contentBox">dddddd</div>
-                </td>
+              <td width={"100px"} style={{ textAlign: 'center' }}>{fref}</td>
               <td>
-              <Button className="copy" onClick={() => handleCopy(document.getElementById("Result").innerHTML)}>
+              <Button className="copy" onClick={handleClipboardCopy}>
                   <img src={copy} width="20px" height="20px"/>
                   </Button>
                 </td>
-              <td><Button className="reportLinkButton">링크</Button></td>
             </tr>
             </table>
             </div>
@@ -63,4 +63,5 @@ const BookMypage = () => {
             );
         }
 
-        export default BookMypage;
+        export default ReportMypage;
+

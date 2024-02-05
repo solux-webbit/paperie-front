@@ -90,7 +90,7 @@ function ResultReport({ searchResults, setApa, setMla, setChicago, setVan }) {
                 </td>
               </tr>
             ))}
-            <References apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults}/>
+            <References ftype="논문" apa={apaResults} mla={mlaResults} chicago={chiResults} van={vnaResults}/>
           </tbody>
         </table>
       )}

@@ -50,12 +50,10 @@ function References({title, ftype, apa, mla, chicago, van }) {
 
   const handleToMypage = async (reference, result) =>{
     try{
-      console.log("Mypage!!:", title);
       console.log("Mypage!!:", reference);
       console.log("Mypage!!:", ftype);
       console.log("Mypage!!:", result);
       const response = await axios.post("http://127.0.0.1:8000/mypage/save", {
-        title: title,
         ref : reference,
         type : ftype,
         content: result,
