@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar.js";
 import TopBar from "../components/TopBar.js";
-import Aboutus from "../assets/Aboutus.png";
+import Aboutus from "../assets/Aboutus.jpg";
 
 const ContentContainer = styled.div`
   flex: 1;
