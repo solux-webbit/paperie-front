@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
 
-const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess }) => {
+const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess, onLogin }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +26,7 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess })
       sessionStorage.setItem("userToken", jwtToken);
       console.log(res.data);
       onLoginSuccess(username);
+      onLogin();
       closeModal();
 
 

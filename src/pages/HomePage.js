@@ -7,6 +7,7 @@ import TopBar from "../components/TopBar.js";
 import SearchReport from "../components/SearchReport.js";
 import References from "../components/References.js";
 import ResultReport from "../components/ResultReport.js";
+import { AuthProvider } from '../components/AuthContext';
 
 const ContentContainer = styled.div`
   flex: 1;
@@ -32,6 +33,8 @@ const ReferencesContainer = styled.div`
 
 const HomePage = () => {
   return (
+    
+    <AuthProvider>
     <>
       <Sidebar />
       <ContentContainer>
@@ -46,6 +49,7 @@ const HomePage = () => {
         </ReferencesContainer>
       </ContentContainer>
     </>
+    </AuthProvider>
   );
 };
 

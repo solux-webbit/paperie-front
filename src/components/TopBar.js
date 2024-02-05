@@ -1,13 +1,12 @@
-// //src\components\TopBar.js
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal"; 
 import "./SignIn.css";
 import axios from "axios";
+import { useAuth } from './AuthContext';
 
 const TopBarWrapper = styled.div`
   display: flex;
@@ -16,104 +15,87 @@ const TopBarWrapper = styled.div`
   background-color: #FAFBFF;
 `;
 
-class TopBar extends React.Component {
-  constructor(props) {
-    super(props);
+const TopBar = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const { isLoggedIn, login, logout } = useAuth();
 
-    this.state = {
-      isModalVisible: false,
-      isLoggedIn: false,
-      id: "",
-      password: "",
-      username: "",
-    };
-  }
-
-  _changeID = function () {
-    const id_v = document.getElementsByName('Id')[0].value;
-
-    this.setState({
-      id: id_v,
-    });
-  }
-
-  _changePW = function () {
-    const pw_v = document.getElementsByName("Pwd")[0].value;
-
-    this.setState({
-      password: pw_v,
-    });
-  }
-
-  openModal = function () {
-    this.setState({
-      isModalVisible: true,
-    });
-  }
-
-  closeModal = function () {
-    this.setState({
-      isModalVisible: false,
-    });
-  }
-
-  handleLoginSuccess = (username) => {
-    this.setState({
-      isLoggedIn: true,
-      username: username,
-    });
-  }
-
-  handleLogout = async () => {
-    // 로그아웃 처리 로직을 여기에 추가
-    try{
-      const username = this.state.username; 
-      const res = await axios.post("http://127.0.0.1:8000/accounts/logout/", {
-          username,
-        });
-        // 로그아웃이 성공한 경우에 대한 처리
-        const user = res.data;
-        const jwtToken = user.token;
-        const { result, errorCause } = res.data;
-  
-        // 토큰 저장
-        sessionStorage.removeItem("userToken", jwtToken);
-
-        this.setState({
-          isLoggedIn: false,
-        });
-  
-      } catch (error) {
-        // 로그아웃이 실패한 경우에 대한 처리
-        console.error("로그아웃 실패:", error);
-      }
+  const changeID = () => {
+    const idValue = document.getElementsByName('Id')[0].value;
+    setId(idValue);
   };
 
-  render() {
-    console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
-    return (
-      <TopBarWrapper>
-        {this.state.isLoggedIn ? (
-          <Button variant="light" onClick={() => this.handleLogout()}>logout</Button>) : (
-            <Button variant="light" onClick={() => this.openModal()}>login</Button>
-          )}
-        &nbsp;
-        <LoginModal
-          visible={this.state.isModalVisible}
-          closeModal={() => this.closeModal()}
-          changeID={() => this._changeID()}
-          changePW={() => this._changePW()}
-          onLoginSuccess={this.handleLoginSuccess}
-        />
-        { this.state.isLoggedIn ? (
-          <Link to="/mypage">
-            <Button variant="light">mypage</Button>
-          </Link>
-        ) : (<Button variant="light" disabled>Mypage</Button>) }
-      </TopBarWrapper>
-    );
+  const changePW = () => {
+    const pwValue = document.getElementsByName("Pwd")[0].value;
+    setPassword(pwValue);
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleLoginSuccess = (username) => {
+    //setLoggedIn(true);
+    setUsername(username);
+  };
+
+  const handleLogin = () => {
+    login();
   }
-}
+
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/accounts/logout/", {
+        username,
+      });
+
+      const user = res.data;
+      const jwtToken = user.token;
+      const { result, errorCause } = res.data;
+
+      sessionStorage.removeItem("userToken", jwtToken);
+
+      //setLoggedIn(false);
+      logout();
+
+    } catch (error) {
+      console.error("로그아웃 실패:", error);
+    }
+  };
+
+  console.log('아이디 : ' + id + ', 비밀번호 : ' + password);
+
+  return (
+    <TopBarWrapper>
+      {isLoggedIn ? (
+        <Button variant="light" onClick={handleLogout}>logout</Button>
+      ) : (
+        <>
+        <Button variant="light" onClick={handleLogin}>login</Button>
+        <LoginModal onLogin={handleLogin} visible={isModalVisible}
+        closeModal={closeModal}
+        changeID={changeID}
+        changePW={changePW}
+        onLoginSuccess={handleLoginSuccess}/>
+        </>
+      )}
+      &nbsp;
+      {isLoggedIn ? (
+        <Link to="/mypage">
+          <Button variant="light">Mypage</Button>
+        </Link>
+      ) : (
+        <Button variant="light" disabled>Mypage</Button>
+      )}
+    </TopBarWrapper>
+  );
+};
 
 export default TopBar;
 
