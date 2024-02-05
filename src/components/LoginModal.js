@@ -13,12 +13,20 @@ const LoginModal = ({ visible, closeModal, changeID, changePW }) => {
 
   const handleLogin= async () => {
     try{
-    const response = await axios.post("http://127.0.0.1:8000/accounts/api/token/", {
+    const res = await axios.post("http://127.0.0.1:8000/accounts/login/", {
         username, 
         password, 
       });
       // 로그인이 성공한 경우에 대한 처리
-      console.log(response.data);
+      const user = res.data;
+      const jwtToken = user.token;
+      const { result, errorCause } = res.data;
+
+      // 토큰 저장
+      sessionStorage.setItem("userToken", jwtToken);
+      console.log(res.data);
+      closeModal();
+
     } catch (error) {
       // 로그인이 실패한 경우에 대한 처리
       console.error("로그인 실패:", error);
