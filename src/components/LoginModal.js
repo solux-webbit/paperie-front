@@ -24,10 +24,10 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess })
 
       // 토큰 저장
       sessionStorage.setItem("userToken", jwtToken);
-      sessionStorage.setItem("isLoggedIn", "1");
       console.log(res.data);
       onLoginSuccess(username);
       closeModal();
+
 
     } catch (error) {
       // 로그인이 실패한 경우에 대한 처리

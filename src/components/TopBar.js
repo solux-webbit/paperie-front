@@ -27,14 +27,6 @@ class TopBar extends React.Component {
       password: "",
       username: "",
     };
-
-    const storedUserLoggedInInformation = sessionStorage.getItem("isLoggedIn");
-
-    if (storedUserLoggedInInformation === "1") {
-      this.setState({
-        isLoggedIn: true,
-      });
-    }
   }
 
   _changeID = function () {
