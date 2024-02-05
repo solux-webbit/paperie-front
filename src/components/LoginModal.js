@@ -13,7 +13,7 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess })
 
   const handleLogin= async () => {
     try{
-    const res = await axios.post("http://127.0.0.1:8000/accounts/api/token/", {
+    const res = await axios.post("http://127.0.0.1:8000/accounts/login/", {
         username, 
         password, 
       });
