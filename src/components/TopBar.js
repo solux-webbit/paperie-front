@@ -29,6 +29,15 @@ class TopBar extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const storedUserLoggedInInformation = window.sessionStorage.getItem("isLoggedIn");
+    if (storedUserLoggedInInformation === "1") {
+      this.setState({
+        isLoggedIn: true,
+      });
+    }
+  }
+
   _changeID = function () {
     const id_v = document.getElementsByName('Id')[0].value;
 
@@ -76,8 +85,9 @@ class TopBar extends React.Component {
         const jwtToken = user.token;
         const { result, errorCause } = res.data;
   
-        // 토큰 저장
+        // 토큰 삭제
         sessionStorage.removeItem("userToken", jwtToken);
+        window.sessionStorage.removeItem("isLoggedIn");
 
         this.setState({
           isLoggedIn: false,

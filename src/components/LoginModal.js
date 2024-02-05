@@ -24,6 +24,7 @@ const LoginModal = ({ visible, closeModal, changeID, changePW, onLoginSuccess })
 
       // 토큰 저장
       sessionStorage.setItem("userToken", jwtToken);
+      window.sessionStorage.setItem("isLoggedIn", "1");
       console.log(res.data);
       onLoginSuccess(username);
       closeModal();
